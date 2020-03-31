@@ -1,6 +1,7 @@
 package com.movieTheater.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 
 import javax.persistence.Entity;
@@ -68,7 +69,7 @@ public class Movie {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		return price.setScale(2, RoundingMode.UP);
 	}
 
 	public void setPrice(BigDecimal price) {

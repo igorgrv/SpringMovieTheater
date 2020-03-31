@@ -3,6 +3,7 @@ package com.movieTheater.model;
 import javax.persistence.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -81,7 +82,7 @@ public class Room {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		return price.setScale(2, RoundingMode.UP);
 	}
 
 	public void setPrice(BigDecimal price) {

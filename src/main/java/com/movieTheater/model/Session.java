@@ -1,6 +1,7 @@
 package com.movieTheater.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
@@ -72,7 +73,7 @@ public class Session {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		return price.setScale(2, RoundingMode.UP);
 	}
 
 	public void setPrice(BigDecimal price) {

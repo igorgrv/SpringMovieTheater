@@ -1,6 +1,7 @@
 package com.movieTheater.model.form;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -71,7 +72,7 @@ public class RoomForm {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		return price.setScale(2, RoundingMode.UP);
 	}
 
 	public void setPrice(BigDecimal price) {
