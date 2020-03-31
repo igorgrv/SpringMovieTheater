@@ -12,31 +12,31 @@
         <table class="table table-hover ">
             <thead>
             <tr>
-                <th>Horário</th>
-                <th>Filme</th>
-                <th>Duração</th>
- <!--                 <th>Preço</th> -->
+                <th>Time</th>
+                <th>Movie</th>
+                <th>Duration</th>
+                <th>Price</th>
 
-                <th colspan="2" class="text-center">Ações</th>
+                <th colspan="2" class="text-center">Actions</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="sessao" items="${sessoes}">
                 <tr>
-                    <td>${sessao.horario}</td>
-                    <td>${sessao.filme.nome}</td>
-                    <td>${sessao.filme.duracao.toMinutes()}</td>
-<%--                     <td>${sessao.preco}</td> --%>
+                    <td>${sessao.time}</td>
+                    <td>${sessao.filme.name}</td>
+                    <td>${sessao.filme.duration.toMinutes()}</td>
+                    <td>${sessao.price}</td>
 
                     <td>
-                        <a onclick="excluir(${sessao.id})" class="btn btn-danger">Excluir</a>
+                        <a onclick="excluir(${sessao.id})" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         <div class="col-md-6 col-md-offset-3">
-            <a href="/admin/sessao?salaId=${sala.id}" class="btn btn-block btn-info">Nova</a>
+            <a href="/admin/sessao?roomId=${sala.id}" class="btn btn-block btn-info">New</a>
         </div>
 		</div>
         <script>

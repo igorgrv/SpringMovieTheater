@@ -6,11 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Repository;
+
 import com.movieTheater.model.Movie;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.Session;
 
-
+@Repository
 public class SessionDao {
 	@PersistenceContext
 	private EntityManager mg;

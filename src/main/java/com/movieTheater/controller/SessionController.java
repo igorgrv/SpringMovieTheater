@@ -1,18 +1,19 @@
 package com.movieTheater.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.movieTheater.Validations.SessionManagement;
 import com.movieTheater.dao.MovieDao;
 import com.movieTheater.dao.RoomDao;
 import com.movieTheater.dao.SessionDao;
@@ -21,6 +22,8 @@ import com.movieTheater.model.Room;
 import com.movieTheater.model.Session;
 import com.movieTheater.model.form.SessionForm;
 
+@Controller
+@Transactional
 public class SessionController {
 	@Autowired
 	private SessionDao sessionDao;
@@ -38,12 +41,12 @@ public class SessionController {
 //	private Carrinho carrinho;
 
 	@GetMapping("/admin/sessao")
-	public ModelAndView form(@RequestParam("salaId") Integer salaId) {
+	public ModelAndView form(@RequestParam("roomId") Integer roomId) {
 		ModelAndView mv = new ModelAndView("sessao/sessao");
-		List<Movie> filme = movieDao.findAll();
-		Room sala = roomDao.findOne(salaId);
-		mv.addObject("filmes", filme);
-		mv.addObject("sala", sala);
+		List<Movie> movies = movieDao.findAll();
+		Room room = roomDao.findOne(roomId);
+		mv.addObject("movies", movies);
+		mv.addObject("room", room);
 		return mv;
 	}
 
@@ -52,16 +55,16 @@ public class SessionController {
 		if (result.hasErrors()) {
 			return form(form.getRoomId());
 		}
-		Session sessao = form.toSession(movieDao, roomDao);
-		List<Session> sessoes = sessionDao.listaDeSessoesPorRoom(sessao.getRoom());
-		ValidaSession valida = new ValidaSession(sessoes);
+		Session session = form.toSession(movieDao, roomDao);
+//		List<Session> sessions = sessionDao.listaDeSessoesPorRoom(session.getRoom());
+//		SessionManagement validation = new SessionManagement(sessions);
 
-		if (valida.cabe(sessao)) {
-			sessionDao.save(sessao);
+//		if (validation.fit(session)) {
+			sessionDao.save(session);
 			return new ModelAndView("redirect:/admin/sala/" + form.getRoomId() + "/sessoes/");
-		} else {
-			return form(form.getRoomId());
-		}
+//		} else {
+//			return form(form.getRoomId());
+//		}
 
 	}
 

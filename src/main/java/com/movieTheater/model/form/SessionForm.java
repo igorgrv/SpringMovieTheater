@@ -51,5 +51,5 @@ public class SessionForm {
 	public void setTime(LocalTime time) {
 		this.time = time;
 	}
-	
+
 }
