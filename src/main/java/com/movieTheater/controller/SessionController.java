@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.movieTheater.dao.MovieDao;
 import com.movieTheater.dao.RoomDao;
 import com.movieTheater.dao.SessionDao;
+import com.movieTheater.model.Carrinho;
 import com.movieTheater.model.Movie;
 import com.movieTheater.model.MovieDetails;
 import com.movieTheater.model.Room;
@@ -44,7 +45,11 @@ public class SessionController {
 	private OmdbClient client;
 
 	@Autowired
+<<<<<<< HEAD
 	private ShopCart shopCart;
+=======
+	private Carrinho shopCart;
+>>>>>>> work
 
 	@GetMapping("/admin/sessao")
 	public ModelAndView form(@RequestParam("roomId") Integer roomId) {
@@ -79,7 +84,11 @@ public class SessionController {
 		ModelAndView mv = new ModelAndView("sessao/lugares");
 		Session session = sessionDao.findOne(id);
 		Optional<MovieDetails> details = client.request(session.getMovie());
+<<<<<<< HEAD
 		mv.addObject("sessao", session);
+=======
+		mv.addObject("session", session);
+>>>>>>> work
 		mv.addObject("carrinho", shopCart);
 		mv.addObject("imagemCapa", details.orElse(new MovieDetails()));
 		mv.addObject("tiposDeIngressos", TypeOfTickets.values());

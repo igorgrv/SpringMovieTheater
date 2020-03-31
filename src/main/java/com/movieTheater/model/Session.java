@@ -29,13 +29,14 @@ public class Session {
 	private BigDecimal price;
 	private LocalTime time;
 
-	@OneToMany(mappedBy = "session", fetch = FetchType.EAGER)
-	private Set<Ticket> tickets = new HashSet<>();
+	@OneToMany(mappedBy = "sessao", fetch = FetchType.EAGER)
+	private Set<Ingresso> ingressos = new HashSet<>();
 
 	/**
 	 * @deprecated hibernat only
 	 */
-	public Session() {	}
+	public Session() {
+	}
 
 	public Session(Movie filme, Room sala, LocalTime horario) {
 		this.movie = filme;
@@ -44,14 +45,13 @@ public class Session {
 		this.price = sala.getPrice().add(filme.getPrice());
 	}
 
-	public Map<String, List<Seat>> getMapaDeLugares() {
+	public Map<String, List<Lugar>> getMapaDeLugares() {
 		return room.getMapaDeLugares();
 	}
 
-	public boolean isAvailable(Seat seat) {
-		return tickets.stream().map(Ticket::getSeat).noneMatch(l -> l.equals(seat));
+	public boolean isAvailable(Lugar lugar) {
+		return ingressos.stream().map(Ingresso::getLugar).noneMatch(l -> l.equals(lugar));
 	}
-	
 
 	public Integer getId() {
 		return id;
@@ -93,14 +93,12 @@ public class Session {
 		this.time = time;
 	}
 
-	public Set<Ticket> getTickets() {
-		return tickets;
+	public Set<Ingresso> getIngressos() {
+		return ingressos;
 	}
 
-	public void setTickets(Set<Ticket> tickets) {
-		this.tickets = tickets;
+	public void setIngressos(Set<Ingresso> ingressos) {
+		this.ingressos = ingressos;
 	}
-	
-	
 
 }

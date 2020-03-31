@@ -1,11 +1,21 @@
 package com.movieTheater.model;
 
-import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author igorg
@@ -20,7 +30,7 @@ public class Room {
 	private BigDecimal price = BigDecimal.ZERO;;
 
 	@OneToMany(fetch = FetchType.EAGER)
-	private Set<Seat> seat = new HashSet<>();
+	private Set<Lugar> lugar = new HashSet<>();
 
 	/**
 	 * @deprecated hibernate only
@@ -38,20 +48,20 @@ public class Room {
 
 	// -----------------------------------------------------------------
 	// Methods
-	public void add(Seat seat) {
-		this.seat.add(seat);
+	public void add(Lugar lugar) {
+		this.lugar.add(lugar);
 	}
 
-	public Map<String, List<Seat>> getMapaDeLugares() {
-		if (!this.seat.isEmpty()) {
-			return this.seat.stream().collect(Collectors.groupingBy(Seat::getRow, Collectors.toList()));
+	public Map<String, List<Lugar>> getMapaDeLugares() {
+		if (!this.lugar.isEmpty()) {
+			return this.lugar.stream().collect(Collectors.groupingBy(Lugar::getFileira, Collectors.toList()));
 		}
 		return Collections.emptyMap();
 	}
 
 	public Integer lugar(String fileira, Integer posicao) {
-		Optional<Seat> optional = this.seat.stream()
-				.filter((x) -> fileira.equals(x.getRow()) && posicao.equals(x.getLine())).findFirst();
+		Optional<Lugar> optional = this.lugar.stream()
+				.filter((x) -> fileira.equals(x.getFileira()) && posicao.equals(x.getPosicao())).findFirst();
 		return optional.get().getId();
 	}
 
@@ -73,12 +83,12 @@ public class Room {
 		this.name = name;
 	}
 
-	public Set<Seat> getSeat() {
-		return seat;
+	public Set<Lugar> getSeat() {
+		return lugar;
 	}
 
-	public void setSeat(Set<Seat> seat) {
-		this.seat = seat;
+	public void setSeat(Set<Lugar> lugar) {
+		this.lugar = lugar;
 	}
 
 	public BigDecimal getPrice() {
