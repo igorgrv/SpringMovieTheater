@@ -98,6 +98,7 @@ public class MovieController {
 		List<Movie> movies = movieDao.findAll();
 		mv.addObject("movies", movies);
 		return mv;
+		
 	}
 
 	@GetMapping("/filme/{id}/detalhe")
