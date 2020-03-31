@@ -1,21 +1,24 @@
-package br.com.caelum.ingresso.dao;
+package com.movieTheater.dao;
 
-import br.com.caelum.ingresso.model.Lugar;
 import org.springframework.stereotype.Repository;
+
+import com.movieTheater.model.Seat;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * Created by nando on 03/03/17.
+ * 
+ * @author igorg
+ *
  */
 @Repository
-public class LugarDao {
+public class SeatDao {
 
     @PersistenceContext
     private EntityManager manager;
 
-    public void save(Lugar lugar) {
-        manager.persist(lugar);
+    public void save(Seat seat) {
+        manager.persist(seat);
     }
 }

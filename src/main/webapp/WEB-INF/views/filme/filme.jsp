@@ -13,26 +13,26 @@
             <input type="hidden" name="id" value="${filme.id}">
 
             <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input id="nome" type="text" name="nome" class="form-control" value="${filme.nome}">
-                <c:forEach items="${bindingResult.getFieldErrors('nome')}" var="error">
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="name" class="form-control" value="${filme.name}">
+                <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
                     <span class="text-danger">${error.defaultMessage}</span>
                 </c:forEach>
             </div>
 
             <div class="form-group">
-                <label for="genero">Genero:</label>
-                <input id="genero" type="text" name="genero" class="form-control" value="${filme.genero}">
-                <c:forEach items="${bindingResult.getFieldErrors('genero')}" var="error">
+                <label for="genre">Movie genre:</label>
+                <input id="genre" type="text" name="genre" class="form-control" value="${filme.genre}" placeholder="Action, comedy, SCI-FI">
+                <c:forEach items="${bindingResult.getFieldErrors('genre')}" var="error">
                     <span class="text-danger">${error.defaultMessage}</span>
                 </c:forEach>
             </div>
 
             <div class="form-group">
-                <label for="duracao">Duracao:</label>
-                <input id="duracao" type="text" name="duracao" class="form-control"
-                       value="${filme.duracao.toMinutes()}">
-                <c:forEach items="${bindingResult.getFieldErrors('duracao')}" var="error">
+                <label for="duration">Duration:</label>
+                <input id="duration" type="text" name="duration" class="form-control"
+                       value="${filme.duration.toMinutes()}" placeholder="Duration in minutes">
+                <c:forEach items="${bindingResult.getFieldErrors('duration')}" var="error">
                     <span class="text-danger">${error.defaultMessage}</span>
                 </c:forEach>
             </div>
@@ -46,7 +46,7 @@
 <%-- 				</c:forEach> --%>
 <!-- 			</div> -->
 
-            <button type="submit" class="btn btn-primary">Gravar</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
         </div>
     </jsp:body>

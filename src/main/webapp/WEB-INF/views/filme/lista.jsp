@@ -11,27 +11,27 @@
 		<table class="table table-hover ">
 			<thead>
 				<tr>
-					<th>Nome</th>
-					<th>Duração</th>
+					<th>Name</th>
+					<th>Duration</th>
 					<!-- <th>Preço</th> -->
-					<th colspan="2" class="text-center">Ações</th>
+					<th colspan="2" class="text-center">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="filme" items="${filmes}">
 					<tr>
-						<td>${filme.nome}</td>
-						<td>${filme.duracao.toMinutes()}</td>
+						<td>${filme.name}</td>
+						<td>${filme.duration.toMinutes()}</td>
 				<%--		<td>${filme.preco}</td>			--%>			
 						<td>
-							<a onclick="excluir(${filme.id})" class="btn btn-danger">Excluir</a>
+							<a onclick="excluir(${filme.id})" class="btn btn-danger">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="col-md-6 col-md-offset-3">
-			<a href="/admin/filme" class="btn btn-block btn-info">Novo</a>
+			<a href="/admin/filme" class="btn btn-block btn-info">New</a>
 		</div>
 		</div>
 		<script>

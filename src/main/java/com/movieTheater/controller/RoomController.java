@@ -1,8 +1,4 @@
-package br.com.caelum.ingresso.controller;
-
-import br.com.caelum.ingresso.dao.SalaDao;
-import br.com.caelum.ingresso.model.Sala;
-import br.com.caelum.ingresso.model.form.SalaForm;
+package com.movieTheater.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,27 +7,33 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.movieTheater.dao.RoomDao;
+import com.movieTheater.model.Room;
+import com.movieTheater.model.form.RoomForm;
+
 import javax.validation.Valid;
 import java.util.Optional;
 
 /**
- * Created by nando on 03/03/17.
+ * 
+ * @author igorg
+ *
  */
 @Controller
-public class SalaController {
+public class RoomController {
 
     @Autowired
-    private SalaDao salaDao;
+    private RoomDao roomDao;
 
 
     @GetMapping({"/admin/sala", "/admin/sala/{id}"})
-    public ModelAndView form(@PathVariable("id") Optional<Integer> id, SalaForm salaForm) {
+    public ModelAndView form(@PathVariable("id") Optional<Integer> id, RoomForm roomForm) {
         ModelAndView modelAndView = new ModelAndView("sala/sala");
         if (id.isPresent()){
-            Sala sala = salaDao.findOne(id.get());
-            salaForm = new SalaForm(sala);
+            Room room = roomDao.findOne(id.get());
+            roomForm = new RoomForm(room);
         }
-        modelAndView.addObject("salaForm", salaForm);
+        modelAndView.addObject("salaForm", roomForm);
 
         return modelAndView;
     }
@@ -39,13 +41,13 @@ public class SalaController {
 
     @PostMapping("/admin/sala")
     @Transactional
-    public ModelAndView salva(@Valid SalaForm salaForm, BindingResult result) {
-        Sala sala = salaForm.toSala();
+    public ModelAndView salva(@Valid RoomForm roomForm, BindingResult result) {
+        Room room = roomForm.toSala();
         if (result.hasErrors()){
-            return form(Optional.empty(), salaForm);
+            return form(Optional.empty(), roomForm);
         }
-        System.out.println(sala.getLugares().size());
-        salaDao.save(sala);
+        System.out.println(room.getSeat().size());
+        roomDao.save(room);
         return new ModelAndView("redirect:/admin/salas");
     }
 
@@ -53,7 +55,7 @@ public class SalaController {
     public ModelAndView lista(){
         ModelAndView modelAndView = new ModelAndView("sala/lista");
 
-        modelAndView.addObject("salas", salaDao.findAll());
+        modelAndView.addObject("salas", roomDao.findAll());
 
         return modelAndView;
     }
@@ -62,10 +64,10 @@ public class SalaController {
     @GetMapping("/admin/sala/{id}/sessoes")
     public ModelAndView listaSessoes(@PathVariable("id") Integer id) {
 
-        Sala sala = salaDao.findOne(id);
+        Room room = roomDao.findOne(id);
 
         ModelAndView view = new ModelAndView("sessao/lista");
-        view.addObject("sala", sala);
+        view.addObject("sala", room);
 
         return view;
     }
@@ -75,8 +77,8 @@ public class SalaController {
 
         ModelAndView modelAndView = new ModelAndView("lugar/lista");
 
-        Sala sala = salaDao.findOne(id);
-        modelAndView.addObject("sala", sala);
+        Room room = roomDao.findOne(id);
+        modelAndView.addObject("sala", room);
 
         return modelAndView;
     }
@@ -86,6 +88,6 @@ public class SalaController {
     @ResponseBody
     @Transactional
     public void delete(@PathVariable("id") Integer id){
-        salaDao.delete(id);
+        roomDao.delete(id);
     }
 }

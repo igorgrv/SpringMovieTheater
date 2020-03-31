@@ -1,4 +1,4 @@
-package br.com.caelum.ingresso.model;
+package com.movieTheater.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -9,30 +9,30 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by nando on 03/03/17.
+ * @author igorg
  */
 @Entity
-public class Lugar {
+public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotBlank
-    private String fileira;
+    private String row;
 
     @NotNull
-    private Integer posicao;
+    private Integer line;
 
     /**
      * @deprecated hibernate only
      */
-    public Lugar() {
+    public Seat() {
     }
 
-    public Lugar(String apelido, Integer posicao) {
-        this.fileira = apelido;
-        this.posicao = posicao;
+    public Seat(String nickname, Integer line) {
+        this.row = nickname;
+        this.line = line;
     }
 
     public Integer getId() {
@@ -43,29 +43,29 @@ public class Lugar {
         this.id = id;
     }
 
-    public String getFileira() {
-        return fileira;
+    public String getRow() {
+        return row;
     }
 
-    public void setFileira(String apelido) {
-        this.fileira = apelido;
+    public void setRow(String nickname) {
+        this.row = nickname;
     }
 
-    public Integer getPosicao() {
-        return posicao;
+    public Integer getLine() {
+        return line;
     }
 
-    public void setPosicao(Integer posicao) {
-        this.posicao = posicao;
+    public void setLine(Integer line) {
+        this.line = line;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((fileira == null) ? 0 : fileira.hashCode());
+        result = prime * result + ((row == null) ? 0 : row.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((posicao == null) ? 0 : posicao.hashCode());
+        result = prime * result + ((line == null) ? 0 : line.hashCode());
         return result;
     }
 
@@ -77,28 +77,28 @@ public class Lugar {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Lugar other = (Lugar) obj;
-        if (fileira == null) {
-            if (other.fileira != null)
+        Seat other = (Seat) obj;
+        if (row == null) {
+            if (other.row != null)
                 return false;
-        } else if (!fileira.equals(other.fileira))
+        } else if (!row.equals(other.row))
             return false;
         if (id == null) {
             if (other.id != null)
                 return false;
         } else if (!id.equals(other.id))
             return false;
-        if (posicao == null) {
-            if (other.posicao != null)
+        if (line == null) {
+            if (other.line != null)
                 return false;
-        } else if (!posicao.equals(other.posicao))
+        } else if (!line.equals(other.line))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return this.fileira + this.posicao;
+        return this.row + this.line;
     }
 
 }

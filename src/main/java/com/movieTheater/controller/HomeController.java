@@ -1,10 +1,12 @@
-package br.com.caelum.ingresso.controller;
+package com.movieTheater.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Created by nando on 03/03/17.
+ * 
+ * @author igorg
+ *
  */
 @Controller
 public class HomeController {

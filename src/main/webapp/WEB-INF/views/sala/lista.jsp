@@ -9,14 +9,14 @@
         <table class="table table-hover ">
             <thead>
             <tr>
-                <th class="text-center">Nome</th>
+                <th class="text-center">Name</th>
 	       <!-- <th class="text-center">Preço</th>	  -->
-                <th colspan="4" class="text-center">Ações</th>
+                <th colspan="4" class="text-center">Actions</th>
             </thead>
             <tbody>
             <c:forEach var="sala" items="${salas}">
                 <tr>
-                    <td class="text-center">${sala.nome}</td>
+                    <td class="text-center">${sala.name}</td>
 		 <%--   <td class="text-center">${sala.preco}</td> --%>
                     <td class="col-md-1">
                         <a href="/admin/sala/${sala.id}/sessoes/" class="btn btn-primary">
@@ -29,17 +29,17 @@
                         </a>
                     </td>
                     <td>
-                        <a onclick="excluir(${sala.id})" class="btn btn-danger">Excluir</a>
+                        <a onclick="excluir(${sala.id})" class="btn btn-danger">Delete</a>
                     </td>
                     <td>
-                        <a href="/admin/sala/${sala.id}" class="btn btn-info">Alterar</a>
+                        <a href="/admin/sala/${sala.id}" class="btn btn-info">Change</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         <div class="col-md-6 col-md-offset-3">
-            <a href="/admin/sala" class="btn btn-block btn-info">Novo</a>
+            <a href="/admin/sala" class="btn btn-block btn-info">New</a>
         </div>
 		</div>
         <script>

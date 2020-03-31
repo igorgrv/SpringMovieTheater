@@ -11,13 +11,13 @@
                 <div class="col-md-4 ">
                     <a href="/filme/${filme.id}/detalhe">
                         <div class="panel panel-default panelSize">
-                            <div class="panel-heading text-center"><strong>${filme.nome}</strong></div>
+                            <div class="panel-heading text-center"><strong>${filme.name}</strong></div>
                             <div class="panel-body">
                                 <div>
-                                    <strong>Genero:</strong> ${filme.genero}
+                                    <strong>Genero:</strong> ${filme.gender}
                                 </div>
                                 <div>
-                                    <strong>Duração:</strong> ${filme.duracao.toMinutes()} minutos
+                                    <strong>Duração:</strong> ${filme.duration.toMinutes()} minutos
                                 </div>
                             </div>
                         </div>

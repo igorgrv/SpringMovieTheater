@@ -11,15 +11,15 @@
 
         <form action='/admin/sala' method="post">
             <div class="form-group">
-                <input type="hidden" name="salaId" value="${salaForm.salaId}">
-                <c:forEach items="${salaForm.lugares}" var="lugar" varStatus="status">
-                    <input type="hidden" name="lugares[${status.index}].id" value="${lugar.id}">
+                <input type="hidden" name="roomId" value="${salaForm.roomId}">
+                <c:forEach items="${salaForm.seats}" var="lugar" varStatus="status">
+                    <input type="hidden" name="seats[${status.index}].id" value="${lugar.id}">
                 </c:forEach>
 
-                <label for="nome">Nome:</label>
-                <input id="nome" type="text" name="nome" class="form-control" value="${salaForm.nome}">
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="name" class="form-control" value="${salaForm.name}">
 
-                <c:forEach items="${bindingResult.getFieldErrors('nome')}" var="error">
+                <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
                     <span class="text-danger">${error.defaultMessage}</span>
                 </c:forEach>
 
@@ -34,7 +34,7 @@
 <%-- 					<span class="text-danger">${error.defaultMessage}</span> --%>
 <%-- 				</c:forEach> --%>
 <!--             </div> -->
-            <button type="submit" class="btn btn-primary">Gravar</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
         </div>
     </jsp:body>

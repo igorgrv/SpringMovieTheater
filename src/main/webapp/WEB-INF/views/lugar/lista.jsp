@@ -8,7 +8,7 @@
 <ingresso:template>
 	<jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-		<h3>${sala.nome}</h3>
+		<h3>${sala.name}</h3>
 		<table class="table-compra" id="lugares">
 			<tbody>
 				<c:forEach var="map" items="${sala.mapaDeLugares}">
@@ -44,7 +44,7 @@
 												c1.681-2.082,4.185-3.272,6.854-3.272h155.634c2.67,0,5.174,1.19,6.854,3.272c1.688,2.075,2.338,4.773,1.785,7.394l-8.397,39.591
 											c-0.858,4.053-4.496,7-8.639,7H89.678C85.534,269.772,81.896,266.825,81.039,262.772z"/>
 										</svg>
-								    <figcaption>${lugar.posicao}</figcaption>
+								    <figcaption>${lugar.line}</figcaption>
 								</figure></td>
 							</c:forEach>
 							</tr>
@@ -54,7 +54,7 @@
 			</tbody>
 		</table>
 		<div class="col-md-6 col-md-offset-3">
-			<a href="/admin/lugar?salaId=${sala.id}" class="btn btn-block btn-info">Novo</a>
+			<a href="/admin/lugar?roomId=${sala.id}" class="btn btn-block btn-info">New</a>
 		</div>
 		</div>
 	</jsp:body>
