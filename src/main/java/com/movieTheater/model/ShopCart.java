@@ -17,7 +17,7 @@ public class ShopCart {
 		tickets.add(ticket);
 	}
 	
-	public boolean isSelecionado(Seat seat) {
+	public boolean isAvailable(Seat seat) {
 		return tickets.stream().map(Ticket::getSeat).anyMatch(ticket -> ticket.equals(seat));
 	}
 	
@@ -29,7 +29,7 @@ public class ShopCart {
 		return new Buy(tickets);
 	}
 
-	public void limpa() {
+	public void clear() {
 		this.tickets.clear();
 	}
 	

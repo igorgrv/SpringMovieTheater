@@ -79,10 +79,10 @@ public class SessionController {
 		ModelAndView mv = new ModelAndView("sessao/lugares");
 		Session session = sessionDao.findOne(id);
 		Optional<MovieDetails> details = client.request(session.getMovie());
-		mv.addObject("session", session);
-		mv.addObject("shopCart", shopCart);
-		mv.addObject("details", details.orElse(new MovieDetails()));
-		mv.addObject("typeOfTickets", TypeOfTickets.values());
+		mv.addObject("sessao", session);
+		mv.addObject("carrinho", shopCart);
+		mv.addObject("imagemCapa", details.orElse(new MovieDetails()));
+		mv.addObject("tiposDeIngressos", TypeOfTickets.values());
 		return mv;
 	}
 }
