@@ -7,7 +7,7 @@
 <ingresso:template>
     <jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-        <h3>Sessões na sala: ${sala.name}</h3>
+        <h3>Sessions of the room: ${sala.name}</h3>
 
         <table class="table table-hover ">
             <thead>
@@ -21,22 +21,22 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="sessao" items="${sessoes}">
+            <c:forEach var="session" items="${sessions}">
                 <tr>
-                    <td>${sessao.time}</td>
-                    <td>${sessao.filme.name}</td>
-                    <td>${sessao.filme.duration.toMinutes()}</td>
-                    <td>${sessao.price}</td>
+                    <td>${session.time}</td>
+                    <td>${session.movie.name}</td>
+                    <td>${session.movie.duration.toMinutes()}</td>
+                    <td>${session.price}</td>
 
                     <td>
-                        <a onclick="excluir(${sessao.id})" class="btn btn-danger">Delete</a>
+                        <a onclick="excluir(${session.id})" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         <div class="col-md-6 col-md-offset-3">
-            <a href="/admin/sessao?roomId=${sala.id}" class="btn btn-block btn-info">New</a>
+            <a href="/admin/sessao?roomId=${room.id}" class="btn btn-block btn-info">New</a>
         </div>
 		</div>
         <script>

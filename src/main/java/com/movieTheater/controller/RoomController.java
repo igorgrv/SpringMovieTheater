@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.movieTheater.dao.RoomDao;
+import com.movieTheater.dao.SessionDao;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.form.RoomForm;
 
@@ -24,6 +25,9 @@ public class RoomController {
 
     @Autowired
     private RoomDao roomDao;
+    
+    @Autowired
+    private SessionDao sessionDao;
 
 
     @GetMapping({"/admin/sala", "/admin/sala/{id}"})
@@ -67,8 +71,8 @@ public class RoomController {
         Room room = roomDao.findOne(id);
 
         ModelAndView view = new ModelAndView("sessao/lista");
-        view.addObject("sala", room);
-
+        view.addObject("room", room);
+        view.addObject("sessions", sessionDao.listaDeSessoesPorRoom(room));
         return view;
     }
 

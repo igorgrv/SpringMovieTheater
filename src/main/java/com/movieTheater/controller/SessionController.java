@@ -56,15 +56,15 @@ public class SessionController {
 			return form(form.getRoomId());
 		}
 		Session session = form.toSession(movieDao, roomDao);
-//		List<Session> sessions = sessionDao.listaDeSessoesPorRoom(session.getRoom());
-//		SessionManagement validation = new SessionManagement(sessions);
+		List<Session> sessions = sessionDao.listaDeSessoesPorRoom(session.getRoom());
+		SessionManagement validation = new SessionManagement(sessions);
 
-//		if (validation.fit(session)) {
+		if (validation.fit(session)) {
 			sessionDao.save(session);
 			return new ModelAndView("redirect:/admin/sala/" + form.getRoomId() + "/sessoes/");
-//		} else {
-//			return form(form.getRoomId());
-//		}
+		} else {
+			return form(form.getRoomId());
+		}
 
 	}
 
