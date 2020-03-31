@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: nando
+  Date: 20/01/17
+  Time: 14:24
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -16,11 +23,11 @@
 		        <h1>${session.movie.name}</h1>	
 		        <h2>${session.room.name}</h2>
 		        <h3>${session.time}</h3>
-			<img class="capa" src="${details.poster}"/>
+			<img class="capa" src="${imagemCapa.poster}"/>
 			</div>
 		</div>
 		<div class="main">
-			<h2>Seats</h2>
+			<h2>Lugares</h2>
 			<table class="table-compra" id="lugares">
 				<tbody>
 					<c:forEach var="map" items="${session.mapaDeLugares}">
@@ -31,7 +38,7 @@
 								<tr>
 								<c:forEach var="lugar" items="${map.value}">
 									<td class="fileira-assento"><figure>
-										<svg class="assento ${session.isAvailable(lugar) ? 'disponivel' : 'ocupado'}" onclick="${session.isAvailable(lugar) ? 'changeCheckbox(this)' : ''}" data-lugar="${lugar}" id="${seat.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										<svg class="assento ${session.isAvailable(lugar) && !carrinho.isSelecionado(lugar) ? 'disponivel' : 'ocupado'}" onclick="${session.isAvailable(lugar)&& !carrinho.isSelecionado(lugar) ? 'changeCheckbox(this)' : ''}" data-lugar="${lugar}" id="${lugar.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 318.224 305.246" enable-background="new 0 0 318.224 305.246" xml:space="preserve">
 											<g id="FILL">
 												<path d="M269.395,132.246h-15.02V51.414c0-11.758-9.492-21.248-21.248-21.248H85.097
@@ -56,8 +63,8 @@
 												c1.681-2.082,4.185-3.272,6.854-3.272h155.634c2.67,0,5.174,1.19,6.854,3.272c1.688,2.075,2.338,4.773,1.785,7.394l-8.397,39.591
 											c-0.858,4.053-4.496,7-8.639,7H89.678C85.534,269.772,81.896,266.825,81.039,262.772z"/>
 										</svg>
-										<input type="checkbox" value="${seat.id}" >
-									    <figcaption>${seat.line}</figcaption>
+										<input type="checkbox" value="${lugar.id}" >
+									    <figcaption>${lugar.posicao}</figcaption>
 									</figure></td>
 								</c:forEach>
 								</tr>
@@ -66,24 +73,27 @@
 						</tr>
 					</c:forEach>
 					<tr class="telao">
-						<td id="tela">Screen</td>
+						<td id="tela">Tela</td>
+					</tr>
+					<tr class="legenda legenda-menu">
+						<td>Legenda</td>
 					</tr>
 					<tr>
 						<td class="legenda disponivel">
 							<span class="circulo circulo-disponivel"></span>
-							Available
+							Disponível
 						</td>
 					</tr>
 					<tr>
 						<td class="legenda escolhido">
 							<span class="circulo circulo-escolhido"></span>
-							Your Current Selection
+							Selecionado
 						</td>
 					</tr>
 					<tr>
 						<td class="legenda ocupado">
 							<span class="circulo circulo-ocupado"></span>
-							Booked
+							Indisponível
 						</td>
 					</tr>
 				</tbody>
@@ -92,18 +102,18 @@
 	        <form action="/compra/ingressos" method="post">
 	            <table class="table table-hover" id="tabela-ingressos">
 	                <thead>
-	                    <th>Room</th>
-	                    <th>Movie</th>
-	                    <th>Time</th>
-	                    <th>Seat</th>
-	                    <th>Type of Tickts</th>
+	                    <th>Sala</th>
+	                    <th>Filme</th>
+	                    <th>Horario</th>
+	                    <th>Lugar</th>
+	                    <th>Tipo de Ingresso</th>
 	                </thead>
 	                <tbody>
 	
 	                </tbody>
 	            </table>
 	
-	            <button type="submit" class="btn btn-primary finaliza">Buy now!</button>
+	            <button type="submit" class="btn btn-primary finaliza">Finalizar Compra</button>
 	        </form>
 			</div>
 		</div>
@@ -115,65 +125,65 @@
                 var checkbox = $(img).next()[0];
                 console.log(checkbox);
                 console.log(checkbox.value);
-            	var roomId = ${session.room.id};
+            	var salaId = ${session.room.id};
                 var sessionId = ${session.id};
-                var seatName = img.getAttribute('data-lugar');
-                var lineId = "linha_" + roomId + "_" + sessionId + "_" + seatName;
+                var lugarNome = img.getAttribute('data-lugar');
+                var linhaId = "linha_" + salaId + "_" + sessionId + "_" + lugarNome;
 
-                console.log(lineId);
+                console.log(linhaId);
 
                 var tbody = document.querySelector("#tabela-ingressos>tbody");
                 if (!checkbox.checked){
 
                     var index = tbody.rows.length;
 
-                    var inputSessionId = makeInputHiddenBy('ingressos['+index+'].session.id', sessionId);
-                    var inputSeatId = makeInputHiddenBy('ingressos['+index+'].seat.id', checkbox.value);
+                    var inputSessaoId = makeInputHiddenBy('ingressos['+index+'].session.id', sessionId);
+                    var inputLugarId = makeInputHiddenBy('ingressos['+index+'].lugar.id', checkbox.value);
 
                     var row =  tbody.insertRow(index);
-                    row.setAttribute('id', lineId);
+                    row.setAttribute('id', linhaId);
 
-                    var cellRoom = row.insertCell(0);
-                    var room = document.createTextNode('${session.room.name}');
-                    cellRoom.appendChild(room);
+                    var cellSala = row.insertCell(0);
+                    var sala = document.createTextNode('${session.room.name}');
+                    cellSala.appendChild(sala);
 
-                    var cellMovie = row.insertCell(1);
+                    var cellFilme = row.insertCell(1);
                     var movie = document.createTextNode('${session.movie.name}');
-                    cellMovie.appendChild(movie);
+                    cellFilme.appendChild(movie);
 
-                    var cellTime = row.insertCell(2);
-                    var time = document.createTextNode('${session.time}');
-                    cellTime.appendChild(time);
+                    var cellHorario = row.insertCell(2);
+                    var horario = document.createTextNode('${session.time}');
+                    cellHorario.appendChild(horario);
 
-                    var cellSeat = row.insertCell(3);
-                    var seat = document.createTextNode(seatName);
-                    cellSeat.appendChild(seat);
+                    var cellLugar = row.insertCell(3);
+                    var lugar = document.createTextNode(lugarNome);
+                    cellLugar.appendChild(lugar);
 
-                    var cellType = row.insertCell(4);
-                    var selectType = document.createElement('select');
-                    selectType.setAttribute('name', 'ingressos['+index+'].typeOfTickets');
-                    selectType.setAttribute('class', 'form-control input-sm');
+                    var cellTipo = row.insertCell(4);
+                    var selectTipo = document.createElement('select');
+                    selectTipo.setAttribute('name', 'ingressos['+index+'].tipoDeIngresso');
+                    selectTipo.setAttribute('class', 'form-control input-sm');
 
-                <c:forEach items="${typeOfTickets}" var="type" varStatus="status">
+                <c:forEach items="${tiposDeIngressos}" var="tipo" varStatus="status">
                     var option_${status.index} = document.createElement('option');
-                    var text_${status.index} = document.createTextNode('${type.description}');
+                    var text_${status.index} = document.createTextNode('${tipo.description}');
 
-                    option_${status.index}.setAttribute('value', '${type}');
+                    option_${status.index}.setAttribute('value', '${tipo}');
                     option_${status.index}.appendChild(text_${status.index});
 
-                    selectType.appendChild(option_${status.index});
+                    selectTipo.appendChild(option_${status.index});
                 </c:forEach>
 
-                    cellType.appendChild(selectType);
+                    cellTipo.appendChild(selectTipo);
 
-                    row.appendChild(inputSessionId);
-                    row.appendChild(inputSeatId);
+                    row.appendChild(inputSessaoId);
+                    row.appendChild(inputLugarId);
 					
                     checkbox.checked = true;
 					img.classList.add("escolhido");
 					img.classList.remove("disponivel");
                 }else{
-                    var row  = document.querySelector("#"+lineId);
+                    var row  = document.querySelector("#"+linhaId);
 
                     checkbox.checked = false;
 					img.classList.remove("escolhido");
