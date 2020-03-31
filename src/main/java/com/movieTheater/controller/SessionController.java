@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.movieTheater.Validations.SessionManagement;
 import com.movieTheater.dao.MovieDao;
 import com.movieTheater.dao.RoomDao;
 import com.movieTheater.dao.SessionDao;
@@ -21,6 +20,7 @@ import com.movieTheater.model.Movie;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.Session;
 import com.movieTheater.model.form.SessionForm;
+import com.movieTheater.validations.SessionManagement;
 
 @Controller
 @Transactional

@@ -23,7 +23,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Ingresso</a>
+				<a class="navbar-brand" href="/">Igor's Movie Theater</a>
 			</div>
 
 
@@ -32,9 +32,9 @@
 				<ul class="nav navbar-nav navbar-right">
 
 
-					<li><a href="/admin/filmes">Filmes</a></li>
-					<li><a href="/admin/salas">Salas</a></li>
-			<!--		<li><a href="/filme/em-cartaz">Comprar</a></li>		-->																					
+					<li><a href="/admin/filmes">Movies</a></li>
+					<li><a href="/admin/salas">Rooms</a></li>
+					<li><a href="/filme/em-cartaz">In Theaters</a></li>																							
 
 					<sec:authorize access="!isAuthenticated()">
 						<li><a href="/login">Login</a></li>

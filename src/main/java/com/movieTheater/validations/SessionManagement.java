@@ -1,4 +1,4 @@
-package com.movieTheater.Validations;
+package com.movieTheater.validations;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
