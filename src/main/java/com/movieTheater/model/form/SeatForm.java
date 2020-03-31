@@ -18,6 +18,10 @@ public class SeatForm {
     private Integer line;
     private Integer roomId;
 
+    public Seat toLugar() {
+        return new Seat(row, line);
+    }    
+    
     public String getRow() {
         return row;
     }
@@ -42,9 +46,7 @@ public class SeatForm {
         this.line = posicao;
     }
 
-    public Seat toLugar() {
-        return new Seat(row, line);
-    }
+
 
 
 }

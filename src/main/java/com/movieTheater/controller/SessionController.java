@@ -23,6 +23,7 @@ import com.movieTheater.model.MovieDetails;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.Session;
 import com.movieTheater.model.form.SessionForm;
+import com.movieTheater.model.typeOfTickets.TypeOfTickets;
 import com.movieTheater.rest.OmdbClient;
 import com.movieTheater.validations.SessionManagement;
 
@@ -72,15 +73,15 @@ public class SessionController {
 
 	}
 
-//	@GetMapping("/sessao/{id}/lugares")
-//	public ModelAndView selecionaLugares(@PathVariable("id") Integer id) {
-//		ModelAndView mv = new ModelAndView("sessao/lugares");
-//		Session sessao = sessionDao.findOne(id);
-//		Optional<MovieDetails> imagemCapa = client.requiscao(sessao.getMovie());
-//		mv.addObject("sessao", sessao);
+	@GetMapping("/sessao/{id}/lugares")
+	public ModelAndView selecionaLugares(@PathVariable("id") Integer id) {
+		ModelAndView mv = new ModelAndView("sessao/lugares");
+		Session session = sessionDao.findOne(id);
+		Optional<MovieDetails> details = client.request(session.getMovie());
+		mv.addObject("session", session);
 //		mv.addObject("carrinho", carrinho);
-//		mv.addObject("imagemCapa", imagemCapa.orElse(new MovieDetails()));
-//		mv.addObject("tiposDeIngressos", TipoDeIngresso.values());
-//		return mv;
-//	}
+		mv.addObject("details", details.orElse(new MovieDetails()));
+		mv.addObject("typeOfTickets", TypeOfTickets.values());
+		return mv;
+	}
 }
