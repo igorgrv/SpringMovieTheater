@@ -6,18 +6,18 @@
 <ingresso:template>
     <jsp:body>
         <div class=" col-md-6 col-md-offset-3">
-            <c:forEach var="filme" items="${filmes}">
+            <c:forEach var="movie" items="${movies}">
 
                 <div class="col-md-4 ">
-                    <a href="/filme/${filme.id}/detalhe">
+                    <a href="/filme/${movie.id}/detalhe">
                         <div class="panel panel-default panelSize">
-                            <div class="panel-heading text-center"><strong>${filme.name}</strong></div>
+                            <div class="panel-heading text-center"><strong>${movie.name}</strong></div>
                             <div class="panel-body">
                                 <div>
-                                    <strong>Genero:</strong> ${filme.gender}
+                                    <strong>Genre:</strong> ${movie.genre}
                                 </div>
                                 <div>
-                                    <strong>Duração:</strong> ${filme.duration.toMinutes()} minutos
+                                    <strong>Duration:</strong> ${movie.duration.toMinutes()} minutes
                                 </div>
                             </div>
                         </div>

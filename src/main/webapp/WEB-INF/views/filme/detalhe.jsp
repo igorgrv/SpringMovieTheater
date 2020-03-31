@@ -15,54 +15,54 @@
 <ingresso:template>
     <jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-	        <h1>${detalhes.titulo}</h1>
-	        <image src="${detalhes.imagem}" />
+	        <h1>${details.title}</h1>
+	        <image src="${details.poster}" />
 	
 	        <div>
-	            <label for="ano">Ano</label>
-	            <span id="ano">${detalhes.ano}</span>
+	            <label for="year">Year</label>
+	            <span id="year">${details.year}</span>
 	        </div>
 	
 	        <div>
-	            <label for="diretores">Diretores</label>
-	            <span id="diretores">${detalhes.diretores}</span>
+	            <label for="directors">Directors</label>
+	            <span id="directors">${details.directors}</span>
 	        </div>
 	
 	        <div>
-	            <label for="escritores">Escritores</label>
-	            <span id="escritores">${detalhes.escritores}</span>
+	            <label for="escritores">Writers</label>
+	            <span id="escritores">${details.writers}</span>
 	        </div>
 	
 	        <div>
-	            <label for="atores">Atores</label>
-	            <span id="atores">${detalhes.atores}</span>
+	            <label for="atores">Actors</label>
+	            <span id="atores">${details.actors}</span>
 	        </div>
 	
 	        <div>
-	            <label for="descricao">Descrição</label>
-	            <span id="descricao">${detalhes.descricao}</span>
+	            <label for="descricao">Description</label>
+	            <span id="descricao">${details.description}</span>
 	        </div>
 	
 	        <div>
-	            <label for="avaliacao">Avaliação</label>
-	            <span id="avaliacao">${detalhes.avaliacao}</span>
+	            <label for="avaliacao">Avaliation</label>
+	            <span id="avaliacao">${details.rating}</span>
 	        </div>
 
 			<%-- <sec:authorize access="hasRole('COMPRADOR')"> --%>
 				<table class="table table-hover">
 					<thead>
-						<th>Sala</th>
-						<th>Horario</th>
-						<th>Ações</th>
+						<th>Room</th>
+						<th>Time</th>
+						<th>Actions</th>
 					</thead>
 					<tbody>
-						<c:forEach items="${sessoes}" var="sessao">
+						<c:forEach items="${sessions}" var="session">
 							<tr>
-								<td>${sessao.sala.nome}</td>
-								<td>${sessao.horario}</td>
+								<td>${session.room.name}</td>
+								<td>${session.time}</td>
 								<td>
-									<a href="/sessao/${sessao.id}/lugares" class="btn">
-										Comprar
+									<a href="/sessao/${session.id}/lugares" class="btn">
+										Buy
 										<span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
 									</a>
 								</td>

@@ -30,10 +30,10 @@ public class Movie {
 
 	}
 
-	public Movie(String name, Duration duration, String gender, BigDecimal price) {
+	public Movie(String name, Duration duration, String genre, BigDecimal price) {
 		this.name = name;
 		this.duration = duration;
-		this.genre = gender;
+		this.genre = genre;
 		this.price = price;
 	}
 
@@ -65,8 +65,8 @@ public class Movie {
 		return genre;
 	}
 
-	public void setGenre(String gender) {
-		this.genre = gender;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 	public BigDecimal getPrice() {
