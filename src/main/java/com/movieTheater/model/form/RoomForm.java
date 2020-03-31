@@ -1,5 +1,6 @@
 package com.movieTheater.model.form;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +19,9 @@ public class RoomForm {
 	private Integer roomId;
 	@NotBlank
 	private String name;
+	@NotBlank
+	private BigDecimal price = BigDecimal.ZERO;
+
 	private List<Seat> seats = new ArrayList<>();
 
 	// -----------------------------------------------------------------
@@ -34,7 +38,7 @@ public class RoomForm {
 	// -----------------------------------------------------------------
 	// Methods
 	public Room toSala() {
-		Room room = new Room(this.name);
+		Room room = new Room(this.name, this.price);
 		room.setId(this.roomId);
 		room.setSeat(new HashSet<>(this.seats));
 		return room;
@@ -64,6 +68,14 @@ public class RoomForm {
 
 	public void setSeats(List<Seat> seats) {
 		this.seats = seats;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
 }

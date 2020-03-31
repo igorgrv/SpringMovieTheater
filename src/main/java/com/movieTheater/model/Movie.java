@@ -1,5 +1,6 @@
 package com.movieTheater.model;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 
 import javax.persistence.Entity;
@@ -19,6 +20,7 @@ public class Movie {
 	private String name;
 	private Duration duration;
 	private String genre;
+	private BigDecimal price;
 
 	/**
 	 * @deprecated hibernate only
@@ -64,4 +66,17 @@ public class Movie {
 	public void setGenre(String gender) {
 		this.genre = gender;
 	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
 }

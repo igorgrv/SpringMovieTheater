@@ -1,6 +1,8 @@
 package com.movieTheater.model;
 
 import javax.persistence.*;
+
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -14,6 +16,7 @@ public class Room {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private BigDecimal price = BigDecimal.ZERO;;
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Seat> seat = new HashSet<>();
@@ -27,8 +30,9 @@ public class Room {
 
 	// Constructor
 	// -----------------------------------------------------------------
-	public Room(String name) {
+	public Room(String name, BigDecimal price) {
 		this.name = name;
+		this.price = price;
 	}
 
 	// -----------------------------------------------------------------
@@ -74,6 +78,14 @@ public class Room {
 
 	public void setSeat(Set<Seat> seat) {
 		this.seat = seat;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
 }
