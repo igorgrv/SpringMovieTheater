@@ -23,7 +23,6 @@ import com.movieTheater.model.Movie;
 import com.movieTheater.model.MovieDetails;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.Session;
-import com.movieTheater.model.ShopCart;
 import com.movieTheater.model.form.SessionForm;
 import com.movieTheater.model.typeOfTickets.TypeOfTickets;
 import com.movieTheater.rest.OmdbClient;
@@ -45,11 +44,7 @@ public class SessionController {
 	private OmdbClient client;
 
 	@Autowired
-<<<<<<< HEAD
-	private ShopCart shopCart;
-=======
 	private Carrinho shopCart;
->>>>>>> work
 
 	@GetMapping("/admin/sessao")
 	public ModelAndView form(@RequestParam("roomId") Integer roomId) {
@@ -84,11 +79,7 @@ public class SessionController {
 		ModelAndView mv = new ModelAndView("sessao/lugares");
 		Session session = sessionDao.findOne(id);
 		Optional<MovieDetails> details = client.request(session.getMovie());
-<<<<<<< HEAD
-		mv.addObject("sessao", session);
-=======
 		mv.addObject("session", session);
->>>>>>> work
 		mv.addObject("carrinho", shopCart);
 		mv.addObject("imagemCapa", details.orElse(new MovieDetails()));
 		mv.addObject("tiposDeIngressos", TypeOfTickets.values());

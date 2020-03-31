@@ -20,6 +20,7 @@ public class RoomForm {
 	private Integer roomId;
 	@NotBlank
 	private String name;
+	@NotBlank
 	private BigDecimal price = BigDecimal.ZERO;
 
 	private List<Lugar> lugars = new ArrayList<>();

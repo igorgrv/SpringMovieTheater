@@ -18,20 +18,19 @@
                 <th>Preço</th>
                 </thead>
 
-                
-                <c:forEach items="${carrinho.tickets}" var="ingresso" varStatus="status">
+                <tbody>
+                <c:forEach items="${carrinho.ingressos}" var="ingresso" varStatus="status">
 
                     <input type="hidden" name="ingressos[${status.index}].sessao.id" value="${ingresso.sessao.id}">
                     <input type="hidden" name="ingressos[${status.index}].lugar.id" value="${ingresso.lugar.id}">
                     <input type="hidden" name="ingressos[${status.index}].tipoDeIngresso" value="${ingresso.tipoDeIngresso}">
-                   <tbody>
                     <tr>
-                        <td>${ingresso.session.room.name}</td>
-                        <td>${ingresso.seat.row}${ingresso.seat.line}</td>
-                        <td>${ingresso.session.movie.name }</td>
-                        <td>${ingresso.session.time}</td>
-                        <td>${ingresso.typeOfTicket.description}</td>
-                        <td>${ingresso.price}</td>
+                        <td>${ingresso.sessao.sala.nome}</td>
+                        <td>${ingresso.lugar.fileira}${ingresso.lugar.posicao}</td>
+                        <td>${ingresso.sessao.filme.nome }</td>
+                        <td>${ingresso.sessao.horario}</td>
+                        <td>${ingresso.tipoDeIngresso.descricao}</td>
+                        <td>${ingresso.preco}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

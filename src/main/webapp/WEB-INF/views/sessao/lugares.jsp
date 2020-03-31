@@ -20,15 +20,9 @@
     	
 		<div class="sidenav">
 			<div class="elementsNav">
-<<<<<<< HEAD
-		        <h1>${sessao.movie.name}</h1>	
-		        <h2>${sessao.room.name}</h2>
-		        <h3>${sessao.time}</h3>
-=======
 		        <h1>${session.movie.name}</h1>	
 		        <h2>${session.room.name}</h2>
 		        <h3>${session.time}</h3>
->>>>>>> work
 			<img class="capa" src="${imagemCapa.poster}"/>
 			</div>
 		</div>
@@ -36,7 +30,7 @@
 			<h2>Lugares</h2>
 			<table class="table-compra" id="lugares">
 				<tbody>
-					<c:forEach var="map" items="${sessao.mapaDeLugares}">
+					<c:forEach var="map" items="${session.mapaDeLugares}">
 						<tr class="fileira">
 							<td class="fileira-valor">${map.key}</td>
 							<td class="fileira-assentos">
@@ -44,11 +38,7 @@
 								<tr>
 								<c:forEach var="lugar" items="${map.value}">
 									<td class="fileira-assento"><figure>
-<<<<<<< HEAD
-										<svg class="assento ${sessao.isAvailable(lugar) && !carrinho.isAvailable(lugar) ? 'disponivel' : 'ocupado'}" onclick="${sessao.isAvailable(lugar)&& !carrinho.isAvailable(lugar) ? 'changeCheckbox(this)' : ''}" data-lugar="${lugar}" id="${lugar.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-=======
 										<svg class="assento ${session.isAvailable(lugar) && !carrinho.isSelecionado(lugar) ? 'disponivel' : 'ocupado'}" onclick="${session.isAvailable(lugar)&& !carrinho.isSelecionado(lugar) ? 'changeCheckbox(this)' : ''}" data-lugar="${lugar}" id="${lugar.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
->>>>>>> work
 												 viewBox="0 0 318.224 305.246" enable-background="new 0 0 318.224 305.246" xml:space="preserve">
 											<g id="FILL">
 												<path d="M269.395,132.246h-15.02V51.414c0-11.758-9.492-21.248-21.248-21.248H85.097
@@ -74,11 +64,7 @@
 											c-0.858,4.053-4.496,7-8.639,7H89.678C85.534,269.772,81.896,266.825,81.039,262.772z"/>
 										</svg>
 										<input type="checkbox" value="${lugar.id}" >
-<<<<<<< HEAD
-									    <figcaption>${lugar.line}</figcaption>
-=======
 									    <figcaption>${lugar.posicao}</figcaption>
->>>>>>> work
 									</figure></td>
 								</c:forEach>
 								</tr>
@@ -139,17 +125,10 @@
                 var checkbox = $(img).next()[0];
                 console.log(checkbox);
                 console.log(checkbox.value);
-<<<<<<< HEAD
-            	var salaId = ${sessao.room.id};
-                var sessaoId = ${sessao.id};
-                var lugarNome = img.getAttribute('data-lugar');
-                var linhaId = "linha_" + salaId + "_" + sessaoId + "_" + lugarNome;
-=======
             	var salaId = ${session.room.id};
                 var sessionId = ${session.id};
                 var lugarNome = img.getAttribute('data-lugar');
                 var linhaId = "linha_" + salaId + "_" + sessionId + "_" + lugarNome;
->>>>>>> work
 
                 console.log(linhaId);
 
@@ -158,28 +137,13 @@
 
                     var index = tbody.rows.length;
 
-<<<<<<< HEAD
-                    var inputSessaoId = makeInputHiddenBy('ingressos['+index+'].sessao.id', sessaoId);
-=======
                     var inputSessaoId = makeInputHiddenBy('ingressos['+index+'].session.id', sessionId);
->>>>>>> work
                     var inputLugarId = makeInputHiddenBy('ingressos['+index+'].lugar.id', checkbox.value);
 
                     var row =  tbody.insertRow(index);
                     row.setAttribute('id', linhaId);
 
                     var cellSala = row.insertCell(0);
-<<<<<<< HEAD
-                    var sala = document.createTextNode('${sessao.room.name}');
-                    cellSala.appendChild(sala);
-
-                    var cellFilme = row.insertCell(1);
-                    var filme = document.createTextNode('${sessao.movie.name}');
-                    cellFilme.appendChild(filme);
-
-                    var cellHorario = row.insertCell(2);
-                    var horario = document.createTextNode('${sessao.time}');
-=======
                     var sala = document.createTextNode('${session.room.name}');
                     cellSala.appendChild(sala);
 
@@ -189,7 +153,6 @@
 
                     var cellHorario = row.insertCell(2);
                     var horario = document.createTextNode('${session.time}');
->>>>>>> work
                     cellHorario.appendChild(horario);
 
                     var cellLugar = row.insertCell(3);
