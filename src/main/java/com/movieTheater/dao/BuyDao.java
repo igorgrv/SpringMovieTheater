@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.movieTheater.model.Buy;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Repository
 public class BuyDao {
 

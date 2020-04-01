@@ -9,7 +9,7 @@
             <c:forEach var="movie" items="${movies}">
 
                 <div class="col-md-4 ">
-                    <a href="/filme/${movie.id}/detalhe">
+                    <a href="/movie/${movie.id}/detail">
                         <div class="panel panel-default panelSize">
                             <div class="panel-heading text-center"><strong>${movie.name}</strong></div>
                             <div class="panel-body">

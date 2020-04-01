@@ -2,6 +2,11 @@ package com.movieTheater.model.typeOfTickets;
 
 import java.math.BigDecimal;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 public enum TypeOfTickets {
 
 	NORMAL(new NullDiscount()),

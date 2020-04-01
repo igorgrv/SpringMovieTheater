@@ -7,12 +7,19 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Component
 @SessionScope
 public class ShopCart {
 
 	private List<Ticket> tickets = new ArrayList<>();
 
+	// -----------------------------------------------------------------
+	// Methods
 	public void add(Ticket ticket) {
 		tickets.add(ticket);
 	}
@@ -21,6 +28,8 @@ public class ShopCart {
 		return tickets.stream().map(Ticket::getSeat).anyMatch(ticket -> ticket.equals(seat));
 	}
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public BigDecimal getTotal() {
 		return tickets.stream().map(Ticket::getPrice).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
 	}

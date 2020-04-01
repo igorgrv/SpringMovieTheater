@@ -2,6 +2,11 @@ package com.movieTheater.model.typeOfTickets;
 
 import java.math.BigDecimal;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 public class StudentDiscount implements Discount{
 
 	@Override

@@ -52,14 +52,14 @@ public class Room {
 		this.seat.add(seat);
 	}
 
-	public Map<String, List<Seat>> getMapaDeLugares() {
+	public Map<String, List<Seat>> getMapaDeSeats() {
 		if (!this.seat.isEmpty()) {
 			return this.seat.stream().collect(Collectors.groupingBy(Seat::getRow, Collectors.toList()));
 		}
 		return Collections.emptyMap();
 	}
 
-	public Integer lugar(String fileira, Integer posicao) {
+	public Integer seat(String fileira, Integer posicao) {
 		Optional<Seat> optional = this.seat.stream()
 				.filter((x) -> fileira.equals(x.getRow()) && posicao.equals(x.getLine())).findFirst();
 		return optional.get().getId();

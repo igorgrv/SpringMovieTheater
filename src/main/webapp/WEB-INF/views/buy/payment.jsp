@@ -7,7 +7,7 @@
 <movieTheater:template>
     <jsp:body>
    		<div class=" col-md-6 col-md-offset-3">
-        <form action="/buy/buyr" method="post">
+        <form action="/buy/buy" method="post">
             <table class="table table-hover ">
                 <thead>
                 <th>Sala</th>

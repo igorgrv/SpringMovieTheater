@@ -2,6 +2,11 @@ package com.movieTheater.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 public class MovieDetails {
 
 	@JsonProperty("Title")
@@ -28,6 +33,8 @@ public class MovieDetails {
 	@JsonProperty("imdbRating")
 	private String rating;
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public String getTitle() {
 		return title;
 	}

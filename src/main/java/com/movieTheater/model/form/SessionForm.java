@@ -12,6 +12,11 @@ import com.movieTheater.model.Movie;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.Session;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 public class SessionForm {
 	@NotNull
 	private Integer roomId;
@@ -21,13 +26,17 @@ public class SessionForm {
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime time;
 
+	// -----------------------------------------------------------------
+	// Methods
 	public Session toSession(MovieDao movieDao, RoomDao roomDao) {
-		Movie filme = movieDao.findOne(movieId);
+		Movie movie = movieDao.findOne(movieId);
 		Room room = roomDao.findOne(roomId);
-		Session session = new Session(filme, room, this.time);
+		Session session = new Session(movie, room, this.time);
 		return session;
 	}
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public Integer getRoomId() {
 		return roomId;
 	}

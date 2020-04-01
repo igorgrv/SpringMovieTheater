@@ -18,10 +18,14 @@ public class SeatForm {
     private Integer line;
     private Integer roomId;
 
+	// -----------------------------------------------------------------
+	// Methods
     public Seat toLugar() {
         return new Seat(row, line);
     }    
     
+	// -----------------------------------------------------------------
+	// Getters and Setters    
     public String getRow() {
         return row;
     }
@@ -45,8 +49,5 @@ public class SeatForm {
     public void setLine(Integer posicao) {
         this.line = posicao;
     }
-
-
-
 
 }

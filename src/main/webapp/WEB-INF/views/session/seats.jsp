@@ -27,10 +27,10 @@
 			</div>
 		</div>
 		<div class="main">
-			<h2>Lugares</h2>
-			<table class="table-buy" id="lugares">
+			<h2>Seats</h2>
+			<table class="table-buy" id="seats">
 				<tbody>
-					<c:forEach var="map" items="${session.mapaDeLugares}">
+					<c:forEach var="map" items="${session.mapaDeSeats}">
 						<tr class="fileira">
 							<td class="fileira-valor">${map.key}</td>
 							<td class="fileira-assentos">
@@ -38,7 +38,7 @@
 								<tr>
 								<c:forEach var="seat" items="${map.value}">
 									<td class="fileira-assento"><figure>
-										<svg class="assento ${session.isAvailable(seat) && !shopCart.isSelected(seat) ? 'disponivel' : 'ocupado'}" onclick="${session.isAvailable(seat)&& !shopCart.isSelected(seat) ? 'changeCheckbox(this)' : ''}" data-lugar="${seat}" id="${seat.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										<svg class="assento ${session.isAvailable(seat) && !shopCart.isSelected(seat) ? 'disponivel' : 'ocupado'}" onclick="${session.isAvailable(seat)&& !shopCart.isSelected(seat) ? 'changeCheckbox(this)' : ''}" data-seat="${seat}" id="${seat.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 318.224 305.246" enable-background="new 0 0 318.224 305.246" xml:space="preserve">
 											<g id="FILL">
 												<path d="M269.395,132.246h-15.02V51.414c0-11.758-9.492-21.248-21.248-21.248H85.097
@@ -127,7 +127,7 @@
                 console.log(checkbox.value);
             	var roomId = ${session.room.id};
                 var sessionId = ${session.id};
-                var seatNome = img.getAttribute('data-lugar');
+                var seatNome = img.getAttribute('data-seat');
                 var linhaId = "linha_" + roomId + "_" + sessionId + "_" + seatNome;
 
                 console.log(linhaId);

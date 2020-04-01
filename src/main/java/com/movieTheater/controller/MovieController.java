@@ -43,22 +43,22 @@ public class MovieController {
 	private SessionDao sessionDao;
 
 
-    @GetMapping({"/admin/filme", "/admin/filme/{id}"})
+    @GetMapping({"/admin/movie", "/admin/movie/{id}"})
     public ModelAndView form(@PathVariable("id") Optional<Integer> id, Movie movie){
 
-        ModelAndView modelAndView = new ModelAndView("filme/filme");
+        ModelAndView modelAndView = new ModelAndView("movie/movie");
 
         if (id.isPresent()){
             movie = movieDao.findOne(id.get());
         }
 
-        modelAndView.addObject("filme", movie);
+        modelAndView.addObject("movie", movie);
 
         return modelAndView;
     }
 
 
-    @PostMapping("/admin/filme")
+    @PostMapping("/admin/movie")
     @Transactional
     public ModelAndView salva(@Valid Movie movie, BindingResult result){
 
@@ -68,44 +68,44 @@ public class MovieController {
 
         movieDao.save(movie);
 
-        ModelAndView view = new ModelAndView("redirect:/admin/filmes");
+        ModelAndView view = new ModelAndView("redirect:/admin/movies");
 
         return view;
     }
 
 
-    @GetMapping(value="/admin/filmes")
-    public ModelAndView lista(){
+    @GetMapping(value="/admin/movies")
+    public ModelAndView list(){
 
-        ModelAndView modelAndView = new ModelAndView("filme/lista");
+        ModelAndView modelAndView = new ModelAndView("movie/list");
 
-        modelAndView.addObject("filmes", movieDao.findAll());
+        modelAndView.addObject("movies", movieDao.findAll());
 
         return modelAndView;
     }
 
 
-    @DeleteMapping("/admin/filme/{id}")
+    @DeleteMapping("/admin/movie/{id}")
     @ResponseBody
     @Transactional
     public void delete(@PathVariable("id") Integer id){
         movieDao.delete(id);
     }
     
-    @GetMapping("/filme/em-cartaz")
-	public ModelAndView emCartaz() {
-		ModelAndView mv = new ModelAndView("filme/em-cartaz");
+    @GetMapping("/movie/in-theaters")
+	public ModelAndView inTheaters() {
+		ModelAndView mv = new ModelAndView("movie/in-theaters");
 		List<Movie> movies = movieDao.findAll();
 		mv.addObject("movies", movies);
 		return mv;
 		
 	}
 
-	@GetMapping("/filme/{id}/detalhe")
-	public ModelAndView detalheMovie(@PathVariable("id") Integer id) {
-		ModelAndView mv = new ModelAndView("filme/detalhe");
+	@GetMapping("/movie/{id}/detail")
+	public ModelAndView detailsMovie(@PathVariable("id") Integer id) {
+		ModelAndView mv = new ModelAndView("movie/detail");
 		Movie movie = movieDao.findOne(id);
-		List<Session> sessions = sessionDao.listaDeSessoesPorMovie(movie);
+		List<Session> sessions = sessionDao.listDeSessionsPorMovie(movie);
 		mv.addObject("sessions", sessions);
 		
 		Optional<MovieDetails> movieDetails = client.request(movie);

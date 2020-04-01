@@ -5,6 +5,11 @@ import java.time.format.DateTimeFormatter;
 
 import org.springframework.core.convert.converter.Converter;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 public class YearMonthConverter implements Converter<String, YearMonth>{
 
 	@Override

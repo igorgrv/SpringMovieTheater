@@ -11,19 +11,28 @@ import com.movieTheater.model.Seat;
 import com.movieTheater.model.Session;
 import com.movieTheater.model.typeOfTickets.TypeOfTickets;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 public class ShopCartForm {
 
 	private List<Ticket> tickets = new ArrayList<>();
 
-	public List<Ticket> toIngressos(SessionDao sessionDao, SeatDao lugarDao){
+	// -----------------------------------------------------------------
+	// Methods
+	public List<Ticket> toIngressos(SessionDao sessionDao, SeatDao seatDao){
 		return this.tickets.stream().map(ticket -> {
 			Session session = sessionDao.findOne(ticket.getSession().getId());
-			Seat seat = lugarDao.findOne(ticket.getSeat().getId());
+			Seat seat = seatDao.findOne(ticket.getSeat().getId());
 			TypeOfTickets tipoDeIngresso = ticket.getTypeOfTickets();
 			return new Ticket(session, seat, tipoDeIngresso);
 		}).collect(Collectors.toList());
 	}
 	
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public List<Ticket> getIngressos() {
 		return tickets;
 	}

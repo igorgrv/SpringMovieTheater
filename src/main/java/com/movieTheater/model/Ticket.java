@@ -13,6 +13,11 @@ import javax.persistence.ManyToOne;
 
 import com.movieTheater.model.typeOfTickets.TypeOfTickets;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Entity
 public class Ticket {
 
@@ -36,6 +41,8 @@ public class Ticket {
 	 */
 	public Ticket() {}
 
+	// -----------------------------------------------------------------
+	// Constructor
 	public Ticket(Session session, Seat seat, TypeOfTickets typeOfTickets) {
 		this.session = session;
 		this.seat = seat;
@@ -43,6 +50,8 @@ public class Ticket {
 		this.price = typeOfTickets.applyDiscount(session.getPrice());
 	}
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}

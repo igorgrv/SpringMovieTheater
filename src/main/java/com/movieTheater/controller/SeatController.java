@@ -30,28 +30,28 @@ public class SeatController {
 	@Autowired
 	private SeatDao seatDao;
 
-	@GetMapping("/admin/lugar")
-	public ModelAndView form(@RequestParam("roomId") Integer roomId, SeatForm lugarDto) {
+	@GetMapping("/admin/seat")
+	public ModelAndView form(@RequestParam("roomId") Integer roomId, SeatForm seatDto) {
 
-		lugarDto.setRoomId(roomId);
+		seatDto.setRoomId(roomId);
 
-		ModelAndView view = new ModelAndView("lugar/lugar");
+		ModelAndView view = new ModelAndView("seat/seat");
 
-		view.addObject("lugarDto", lugarDto);
+		view.addObject("seatDto", seatDto);
 
 		return view;
 	}
 
-	@PostMapping("/admin/lugar")
+	@PostMapping("/admin/seat")
 	@Transactional
-	public ModelAndView salva(@Valid SeatForm lugarDto, BindingResult result) {
+	public ModelAndView save(@Valid SeatForm seatDto, BindingResult result) {
 
 		if (result.hasErrors())
-			return form(lugarDto.getRoomId(), lugarDto);
+			return form(seatDto.getRoomId(), seatDto);
 
-		Integer roomId = lugarDto.getRoomId();
+		Integer roomId = seatDto.getRoomId();
 
-		Seat seat = lugarDto.toLugar();
+		Seat seat = seatDto.toLugar();
 		seatDao.save(seat);
 
 		Room room = roomDao.findOne(roomId);
@@ -59,7 +59,7 @@ public class SeatController {
 
 		roomDao.save(room);
 
-		return new ModelAndView("redirect:/admin/room/" + roomId + "/lugares/");
+		return new ModelAndView("redirect:/admin/room/" + roomId + "/seats/");
 	}
 
 }

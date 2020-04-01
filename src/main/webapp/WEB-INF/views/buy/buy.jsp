@@ -7,18 +7,18 @@
 <movieTheater:template>
 	<jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-		<c:forEach var="filme" items="${filmes}">
+		<c:forEach var="movie" items="${movies}">
 
 				<div class="col-md-4 ">
-					<a href="/filme/${filme.id}/detalhe">
+					<a href="/movie/${movie.id}/detail">
 						<div class="panel panel-default panelSize">
-							<div class="panel-heading text-center"><strong>${filme.nome}</strong></div>
+							<div class="panel-heading text-center"><strong>${movie.nome}</strong></div>
 							<div class="panel-body">
 								<div>
-									<strong>Genero:</strong> ${filme.genero}
+									<strong>Genero:</strong> ${movie.genero}
 								</div>
 								<div>
-									<strong>Duração:</strong> ${filme.duracao.toMinutes()} minutos
+									<strong>Duração:</strong> ${movie.duracao.toMinutes()} minutos
 								</div>
 							</div>
 						</div>

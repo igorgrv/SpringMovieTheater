@@ -45,7 +45,7 @@ public class RoomController {
 
     @PostMapping("/admin/room")
     @Transactional
-    public ModelAndView salva(@Valid RoomForm roomForm, BindingResult result) {
+    public ModelAndView save(@Valid RoomForm roomForm, BindingResult result) {
         Room room = roomForm.toSala();
         if (result.hasErrors()){
             return form(Optional.empty(), roomForm);
@@ -56,8 +56,8 @@ public class RoomController {
     }
 
     @GetMapping("/admin/rooms")
-    public ModelAndView lista(){
-        ModelAndView modelAndView = new ModelAndView("room/lista");
+    public ModelAndView list(){
+        ModelAndView modelAndView = new ModelAndView("room/list");
 
         modelAndView.addObject("rooms", roomDao.findAll());
 
@@ -66,20 +66,20 @@ public class RoomController {
 
 
     @GetMapping("/admin/room/{id}/sessoes")
-    public ModelAndView listaSessoes(@PathVariable("id") Integer id) {
+    public ModelAndView listSessions(@PathVariable("id") Integer id) {
 
         Room room = roomDao.findOne(id);
 
-        ModelAndView view = new ModelAndView("session/lista");
+        ModelAndView view = new ModelAndView("session/list");
         view.addObject("room", room);
-        view.addObject("sessions", sessionDao.listaDeSessoesPorRoom(room));
+        view.addObject("sessions", sessionDao.listDeSessionsPorRoom(room));
         return view;
     }
 
-    @GetMapping("/admin/room/{id}/lugares/")
-    public ModelAndView listaLugares(@PathVariable("id") Integer id) {
+    @GetMapping("/admin/room/{id}/seats/")
+    public ModelAndView listSeats(@PathVariable("id") Integer id) {
 
-        ModelAndView modelAndView = new ModelAndView("lugar/lista");
+        ModelAndView modelAndView = new ModelAndView("seat/list");
 
         Room room = roomDao.findOne(id);
         modelAndView.addObject("room", room);

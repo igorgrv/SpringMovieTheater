@@ -12,8 +12,8 @@
         <form action='/admin/room' method="post">
             <div class="form-group">
                 <input type="hidden" name="roomId" value="${roomForm.roomId}">
-                <c:forEach items="${roomForm.seats}" var="lugar" varStatus="status">
-                    <input type="hidden" name="seats[${status.index}].id" value="${lugar.id}">
+                <c:forEach items="${roomForm.seats}" var="seat" varStatus="status">
+                    <input type="hidden" name="seats[${status.index}].id" value="${seat.id}">
                 </c:forEach>
 
                 <label for="name">Name:</label>

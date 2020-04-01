@@ -10,6 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Entity
 public class Buy {
 
@@ -25,10 +30,14 @@ public class Buy {
 	 */
 	public Buy() {}
 	
+	// -----------------------------------------------------------------
+	// Constructor
 	public Buy(List<Ticket> tickets) {
 		tickets.forEach(this.tickets::add);
 	}
-
+	
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public Long getId() {
 		return id;
 	}

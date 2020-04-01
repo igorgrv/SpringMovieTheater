@@ -7,11 +7,15 @@ public class Card {
 	private String cardNumber;
 	private Integer cvv;
 	private YearMonth expires;
-
+	
+	// -----------------------------------------------------------------
+	// Methods
 	public boolean isValidated() {
 		return expires.isAfter(YearMonth.now());
 	}
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public String getCardNumber() {
 		return cardNumber;
 	}

@@ -29,7 +29,9 @@ public class Movie {
 	public Movie() {
 
 	}
-
+	
+	// -----------------------------------------------------------------
+	// Constructor
 	public Movie(String name, Duration duration, String genre, BigDecimal price) {
 		this.name = name;
 		this.duration = duration;
@@ -37,6 +39,8 @@ public class Movie {
 		this.price = price;
 	}
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}

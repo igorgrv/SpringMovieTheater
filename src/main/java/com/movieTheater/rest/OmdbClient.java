@@ -9,6 +9,11 @@ import org.springframework.web.client.RestTemplate;
 import com.movieTheater.model.MovieDetails;
 import com.movieTheater.model.Movie;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Component
 public class OmdbClient {
 

@@ -32,21 +32,21 @@ public class BuyController {
 	private BuyDao buyDao;
 	
 	@PostMapping("/buy/ingressos")
-	public ModelAndView enviaParaPagamento(ShopCartForm shopCartForm) {
+	public ModelAndView sendToPayment(ShopCartForm shopCartForm) {
 		ModelAndView mv = new ModelAndView("redirect:/buy");
 		shopCartForm.toIngressos(sessionDao, seatDao).forEach(shopCart::add);
 		return mv;
 	}
 	
 	@GetMapping("/buy")
-	public ModelAndView formCompra(Card card) {
-		ModelAndView mv = new ModelAndView("buy/pagamento");
+	public ModelAndView buyForm(Card card) {
+		ModelAndView mv = new ModelAndView("buy/payment");
 		mv.addObject("shopCart", shopCart);
 		return mv;
 	}
 	
-	@PostMapping("/buy/buyr")
-	public ModelAndView buyr(@Valid Card card, BindingResult result) {
+	@PostMapping("/buy/buy")
+	public ModelAndView buy(@Valid Card card, BindingResult result) {
 		ModelAndView mv = new ModelAndView("redirect:/");
 		
 		if(card.isValidated()) {
@@ -54,7 +54,7 @@ public class BuyController {
 			this.shopCart.clear();
 		} else {
 			result.rejectValue("expires", "Invalid");
-			return formCompra(card);
+			return buyForm(card);
 		}
 		return mv;
 	}

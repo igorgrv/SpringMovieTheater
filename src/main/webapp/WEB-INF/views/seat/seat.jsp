@@ -6,16 +6,16 @@
 <movieTheater:template>
 	<jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-		<form action="/admin/lugar" method="post">
-			<input type="hidden" name="roomId" value="${lugarDto.roomId}">
+		<form action="/admin/seat" method="post">
+			<input type="hidden" name="roomId" value="${seatDto.roomId}">
 
 			<div class="form-group">
 	            <label for="fileira">Row:</label>
-	            <input id="row" type="text" name="row" class="form-control" value="${lugarDto.row}">
+	            <input id="row" type="text" name="row" class="form-control" value="${seatDto.row}">
         	</div>
 			<div class="form-group">
 	            <label for="posicao">Line:</label>
-	            <input id="line" type="text" name="line" class="form-control" value="${lugarDto.line}">
+	            <input id="line" type="text" name="line" class="form-control" value="${seatDto.line}">
         	</div>
 
 

@@ -32,9 +32,9 @@
                             <c:forEach items="${buy.ingressos}" var="ingresso">
                                 <tr>
                                     <td>${ingresso.session.horario}</td>
-                                    <td>${ingresso.session.filme.nome}</td>
+                                    <td>${ingresso.session.movie.nome}</td>
                                     <td>${ingresso.session.room.nome}</td>
-                                    <td>${ingresso.lugar}</td>
+                                    <td>${ingresso.seat}</td>
                                     <td>${ingresso.tipoDeIngresso}</td>
                                     <td>${ingresso.preco}</td>
                                 </tr>

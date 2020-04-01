@@ -41,7 +41,7 @@ public class SessionManagementTest {
 	}
 
 	@Test
-	public void garanteQueNaoDevePermitirSessoesTerminandoDentroDoHorarioDeUmaSessionJaExistente() {
+	public void garanteQueNaoDevePermitirSessionsTerminandoDentroDoHorarioDeUmaSessionJaExistente() {
 		List<Session> sessoes = Arrays.asList(sessionTenOClock);
 		Session session = new Session(rogueOne, room3D, sessionTenOClock.getTime().minusHours(1));
 		SessionManagement management = new SessionManagement(sessoes);
@@ -49,7 +49,7 @@ public class SessionManagementTest {
 	}
 
 	@Test
-	public void garanteQueNaoDevePermitirSessoesIniciandoDentroDoHorarioDeUmaSessionJaExistente() {
+	public void garanteQueNaoDevePermitirSessionsIniciandoDentroDoHorarioDeUmaSessionJaExistente() {
 		List<Session> sessoesDaSala = Arrays.asList(sessionTenOClock);
 		SessionManagement management = new SessionManagement(sessoesDaSala);
 		Session session = new Session( rogueOne, room3D, sessionTenOClock.getTime().plusHours(1));

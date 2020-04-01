@@ -12,6 +12,11 @@ import com.movieTheater.model.Movie;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.Session;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Repository
 public class SessionDao {
 	@PersistenceContext
@@ -21,7 +26,7 @@ public class SessionDao {
 		mg.persist(session);
 	}
 
-	public List<Session> listaDeSessoesPorRoom(Room room) {
+	public List<Session> listDeSessionsPorRoom(Room room) {
 		TypedQuery<Session> query = mg.createQuery("SELECT s FROM Session s WHERE s.room = :room", Session.class);
 		query.setParameter("room", room);
 		return query.getResultList();
@@ -31,7 +36,7 @@ public class SessionDao {
 		return mg.find(Session.class, id);
 	}
 
-	public List<Session> listaDeSessoesPorMovie(Movie movie) {
+	public List<Session> listDeSessionsPorMovie(Movie movie) {
 		TypedQuery<Session> query = mg.createQuery("SELECT s FROM Session s WHERE s.movie = :movie", Session.class);
 		query.setParameter("movie", movie);
 		return query.getResultList();

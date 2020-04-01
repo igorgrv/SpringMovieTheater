@@ -9,15 +9,15 @@
 	<jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
 		<h3>${room.name}</h3>
-		<table class="table-buy" id="lugares">
+		<table class="table-buy" id="seats">
 			<tbody>
-				<c:forEach var="map" items="${room.mapaDeLugares}">
+				<c:forEach var="map" items="${room.mapaDeSeats}">
 					<tr class="fileira">
 						<td class="fileira-valor">${map.key}</td>
 						<td class="fileira-assentos">
 						<table>
 							<tr>
-							<c:forEach var="lugar" items="${map.value}">
+							<c:forEach var="seat" items="${map.value}">
 								<td class="fileira-assento"><figure>
 										<svg class="assento" version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 318.224 305.246" enable-background="new 0 0 318.224 305.246" xml:space="preserve" width="20">
@@ -44,7 +44,7 @@
 												c1.681-2.082,4.185-3.272,6.854-3.272h155.634c2.67,0,5.174,1.19,6.854,3.272c1.688,2.075,2.338,4.773,1.785,7.394l-8.397,39.591
 											c-0.858,4.053-4.496,7-8.639,7H89.678C85.534,269.772,81.896,266.825,81.039,262.772z"/>
 										</svg>
-								    <figcaption>${lugar.line}</figcaption>
+								    <figcaption>${seat.line}</figcaption>
 								</figure></td>
 							</c:forEach>
 							</tr>
@@ -54,7 +54,7 @@
 			</tbody>
 		</table>
 		<div class="col-md-6 col-md-offset-3">
-			<a href="/admin/lugar?roomId=${room.id}" class="btn btn-block btn-info">New</a>
+			<a href="/admin/seat?roomId=${room.id}" class="btn btn-block btn-info">New</a>
 		</div>
 		</div>
 	</jsp:body>

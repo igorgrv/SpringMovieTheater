@@ -30,11 +30,15 @@ public class Seat {
 	public Seat() {
 	}
 
+	// -----------------------------------------------------------------
+	// Constructor
 	public Seat(String row, Integer line) {
 		this.row = row;
 		this.line = line;
 	}
 
+	// -----------------------------------------------------------------
+	// Methods
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,6 +81,8 @@ public class Seat {
 		return this.row + this.line;
 	}
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}

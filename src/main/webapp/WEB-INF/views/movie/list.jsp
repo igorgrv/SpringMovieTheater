@@ -18,27 +18,27 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="filme" items="${filmes}">
+				<c:forEach var="movie" items="${movies}">
 					<tr>
-						<td>${filme.name}</td>
-						<td>${filme.duration.toMinutes()}</td>
-						<td>${filme.price}</td>						
+						<td>${movie.name}</td>
+						<td>${movie.duration.toMinutes()}</td>
+						<td>${movie.price}</td>						
 						<td>
-							<a onclick="excluir(${filme.id})" class="btn btn-danger">Delete</a>
+							<a onclick="excluir(${movie.id})" class="btn btn-danger">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="col-md-6 col-md-offset-3">
-			<a href="/admin/filme" class="btn btn-block btn-info">New</a>
+			<a href="/admin/movie" class="btn btn-block btn-info">New</a>
 		</div>
 		</div>
 		<script>
 			function excluir(id) {
 				var url = window.location.href;
 				$.ajax({
-					url:"/admin/filme/" + id,
+					url:"/admin/movie/" + id,
 					type: 'DELETE',
 					success: function (result) {
 						console.log(result);

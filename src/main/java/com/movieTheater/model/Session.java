@@ -16,6 +16,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Entity
 public class Session {
 
@@ -38,21 +43,27 @@ public class Session {
 	public Session() {
 	}
 
-	public Session(Movie filme, Room room, LocalTime horario) {
-		this.movie = filme;
+	// -----------------------------------------------------------------
+	// Constructor
+	public Session(Movie movie, Room room, LocalTime horario) {
+		this.movie = movie;
 		this.room = room;
 		this.time = horario;
-		this.price = room.getPrice().add(filme.getPrice());
+		this.price = room.getPrice().add(movie.getPrice());
 	}
 
-	public Map<String, List<Seat>> getMapaDeLugares() {
-		return room.getMapaDeLugares();
+	// -----------------------------------------------------------------
+	// Methods
+	public Map<String, List<Seat>> getMapaDeSeats() {
+		return room.getMapaDeSeats();
 	}
 
 	public boolean isAvailable(Seat seat) {
 		return tickets.stream().map(Ticket::getSeat).noneMatch(l -> l.equals(seat));
 	}
 
+	// -----------------------------------------------------------------
+	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}

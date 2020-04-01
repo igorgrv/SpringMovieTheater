@@ -28,6 +28,12 @@ import com.movieTheater.model.typeOfTickets.TypeOfTickets;
 import com.movieTheater.rest.OmdbClient;
 import com.movieTheater.validations.SessionManagement;
 
+
+/**
+ * 
+ * @author igorg
+ *
+ */
 @Controller
 @Transactional
 public class SessionController {
@@ -62,7 +68,7 @@ public class SessionController {
 			return form(form.getRoomId());
 		}
 		Session session = form.toSession(movieDao, roomDao);
-		List<Session> sessions = sessionDao.listaDeSessoesPorRoom(session.getRoom());
+		List<Session> sessions = sessionDao.listDeSessionsPorRoom(session.getRoom());
 		SessionManagement validation = new SessionManagement(sessions);
 
 		if (validation.fit(session)) {
@@ -74,9 +80,9 @@ public class SessionController {
 
 	}
 
-	@GetMapping("/session/{id}/lugares")
-	public ModelAndView selecionaLugares(@PathVariable("id") Integer id) {
-		ModelAndView mv = new ModelAndView("session/lugares");
+	@GetMapping("/session/{id}/seats")
+	public ModelAndView selecionaSeats(@PathVariable("id") Integer id) {
+		ModelAndView mv = new ModelAndView("session/seats");
 		Session session = sessionDao.findOne(id);
 		Optional<MovieDetails> details = client.request(session.getMovie());
 		mv.addObject("session", session);
