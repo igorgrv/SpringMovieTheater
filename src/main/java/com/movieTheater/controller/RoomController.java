@@ -30,20 +30,20 @@ public class RoomController {
     private SessionDao sessionDao;
 
 
-    @GetMapping({"/admin/sala", "/admin/sala/{id}"})
+    @GetMapping({"/admin/room", "/admin/room/{id}"})
     public ModelAndView form(@PathVariable("id") Optional<Integer> id, RoomForm roomForm) {
-        ModelAndView modelAndView = new ModelAndView("sala/sala");
+        ModelAndView modelAndView = new ModelAndView("room/room");
         if (id.isPresent()){
             Room room = roomDao.findOne(id.get());
             roomForm = new RoomForm(room);
         }
-        modelAndView.addObject("salaForm", roomForm);
+        modelAndView.addObject("roomForm", roomForm);
 
         return modelAndView;
     }
 
 
-    @PostMapping("/admin/sala")
+    @PostMapping("/admin/room")
     @Transactional
     public ModelAndView salva(@Valid RoomForm roomForm, BindingResult result) {
         Room room = roomForm.toSala();
@@ -52,20 +52,20 @@ public class RoomController {
         }
         System.out.println(room.getSeat().size());
         roomDao.save(room);
-        return new ModelAndView("redirect:/admin/salas");
+        return new ModelAndView("redirect:/admin/rooms");
     }
 
-    @GetMapping("/admin/salas")
+    @GetMapping("/admin/rooms")
     public ModelAndView lista(){
-        ModelAndView modelAndView = new ModelAndView("sala/lista");
+        ModelAndView modelAndView = new ModelAndView("room/lista");
 
-        modelAndView.addObject("salas", roomDao.findAll());
+        modelAndView.addObject("rooms", roomDao.findAll());
 
         return modelAndView;
     }
 
 
-    @GetMapping("/admin/sala/{id}/sessoes")
+    @GetMapping("/admin/room/{id}/sessoes")
     public ModelAndView listaSessoes(@PathVariable("id") Integer id) {
 
         Room room = roomDao.findOne(id);
@@ -76,19 +76,19 @@ public class RoomController {
         return view;
     }
 
-    @GetMapping("/admin/sala/{id}/lugares/")
+    @GetMapping("/admin/room/{id}/lugares/")
     public ModelAndView listaLugares(@PathVariable("id") Integer id) {
 
         ModelAndView modelAndView = new ModelAndView("lugar/lista");
 
         Room room = roomDao.findOne(id);
-        modelAndView.addObject("sala", room);
+        modelAndView.addObject("room", room);
 
         return modelAndView;
     }
 
 
-    @DeleteMapping("/admin/sala/{id}")
+    @DeleteMapping("/admin/room/{id}")
     @ResponseBody
     @Transactional
     public void delete(@PathVariable("id") Integer id){

@@ -14,39 +14,39 @@
                 <th colspan="4" class="text-center">Actions</th>
             </thead>
             <tbody>
-            <c:forEach var="sala" items="${salas}">
+            <c:forEach var="room" items="${rooms}">
                 <tr>
-                    <td class="text-center">${sala.name}</td>
-		   <td class="text-center">${sala.price}</td>
+                    <td class="text-center">${room.name}</td>
+		   <td class="text-center">${room.price}</td>
                     <td class="col-md-1">
-                        <a href="/admin/sala/${sala.id}/sessoes/" class="btn btn-primary">
+                        <a href="/admin/room/${room.id}/sessoes/" class="btn btn-primary">
                             <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Sessions
                         </a>
                     </td>
                     <td class="col-md-1">
-                        <a href="/admin/sala/${sala.id}/lugares/" class="btn btn-warning">
+                        <a href="/admin/room/${room.id}/lugares/" class="btn btn-warning">
                             <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Seats
                         </a>
                     </td>
                     <td>
-                        <a onclick="excluir(${sala.id})" class="btn btn-danger">Delete</a>
+                        <a onclick="excluir(${room.id})" class="btn btn-danger">Delete</a>
                     </td>
                     <td>
-                        <a href="/admin/sala/${sala.id}" class="btn btn-info">Change</a>
+                        <a href="/admin/room/${room.id}" class="btn btn-info">Change</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         <div class="col-md-6 col-md-offset-3">
-            <a href="/admin/sala" class="btn btn-block btn-info">New</a>
+            <a href="/admin/room" class="btn btn-block btn-info">New</a>
         </div>
 		</div>
         <script>
             function excluir(id) {
                 var url = window.location.href;
                 $.ajax({
-                    url: "/admin/sala/" + id,
+                    url: "/admin/room/" + id,
                     type: 'DELETE',
                     success: function (result) {
                         console.log(result);

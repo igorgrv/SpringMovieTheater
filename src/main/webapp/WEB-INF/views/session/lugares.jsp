@@ -125,10 +125,10 @@
                 var checkbox = $(img).next()[0];
                 console.log(checkbox);
                 console.log(checkbox.value);
-            	var salaId = ${session.room.id};
+            	var roomId = ${session.room.id};
                 var sessionId = ${session.id};
                 var seatNome = img.getAttribute('data-lugar');
-                var linhaId = "linha_" + salaId + "_" + sessionId + "_" + seatNome;
+                var linhaId = "linha_" + roomId + "_" + sessionId + "_" + seatNome;
 
                 console.log(linhaId);
 
@@ -144,8 +144,8 @@
                     row.setAttribute('id', linhaId);
 
                     var cellSala = row.insertCell(0);
-                    var sala = document.createTextNode('${session.room.name}');
-                    cellSala.appendChild(sala);
+                    var room = document.createTextNode('${session.room.name}');
+                    cellSala.appendChild(room);
 
                     var cellFilme = row.insertCell(1);
                     var movie = document.createTextNode('${session.movie.name}');

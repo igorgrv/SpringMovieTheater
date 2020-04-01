@@ -7,17 +7,17 @@
 <movieTheater:template>
     <jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-        <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.sala']}"/>
+        <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.room']}"/>
 
-        <form action='/admin/sala' method="post">
+        <form action='/admin/room' method="post">
             <div class="form-group">
-                <input type="hidden" name="roomId" value="${salaForm.roomId}">
-                <c:forEach items="${salaForm.seats}" var="lugar" varStatus="status">
+                <input type="hidden" name="roomId" value="${roomForm.roomId}">
+                <c:forEach items="${roomForm.seats}" var="lugar" varStatus="status">
                     <input type="hidden" name="seats[${status.index}].id" value="${lugar.id}">
                 </c:forEach>
 
                 <label for="name">Name:</label>
-                <input id="name" type="text" name="name" class="form-control" value="${salaForm.name}">
+                <input id="name" type="text" name="name" class="form-control" value="${roomForm.name}">
 
                 <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
                     <span class="text-danger">${error.defaultMessage}</span>
@@ -29,7 +29,7 @@
              <div class="form-group">
                 <label for="price">Preço:</label>
                 <input id="price" type="text" name="price"
-						class="form-control" value="${salaForm.price}" />
+						class="form-control" value="${roomForm.price}" />
                 <c:forEach items="${bindingResult.getFieldErrors('price')}" var="error">
 					<span class="text-danger">${error.defaultMessage}</span>
 				</c:forEach>

@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>${ingresso.session.horario}</td>
                                     <td>${ingresso.session.filme.nome}</td>
-                                    <td>${ingresso.session.sala.nome}</td>
+                                    <td>${ingresso.session.room.nome}</td>
                                     <td>${ingresso.lugar}</td>
                                     <td>${ingresso.tipoDeIngresso}</td>
                                     <td>${ingresso.preco}</td>

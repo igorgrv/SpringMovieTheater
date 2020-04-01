@@ -8,10 +8,10 @@
 <movieTheater:template>
 	<jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-		<h3>${sala.name}</h3>
+		<h3>${room.name}</h3>
 		<table class="table-buy" id="lugares">
 			<tbody>
-				<c:forEach var="map" items="${sala.mapaDeLugares}">
+				<c:forEach var="map" items="${room.mapaDeLugares}">
 					<tr class="fileira">
 						<td class="fileira-valor">${map.key}</td>
 						<td class="fileira-assentos">
@@ -54,7 +54,7 @@
 			</tbody>
 		</table>
 		<div class="col-md-6 col-md-offset-3">
-			<a href="/admin/lugar?roomId=${sala.id}" class="btn btn-block btn-info">New</a>
+			<a href="/admin/lugar?roomId=${room.id}" class="btn btn-block btn-info">New</a>
 		</div>
 		</div>
 	</jsp:body>

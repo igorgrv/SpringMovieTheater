@@ -23,8 +23,8 @@ public class SessionForm {
 
 	public Session toSession(MovieDao movieDao, RoomDao roomDao) {
 		Movie filme = movieDao.findOne(movieId);
-		Room sala = roomDao.findOne(roomId);
-		Session session = new Session(filme, sala, this.time);
+		Room room = roomDao.findOne(roomId);
+		Session session = new Session(filme, room, this.time);
 		return session;
 	}
 

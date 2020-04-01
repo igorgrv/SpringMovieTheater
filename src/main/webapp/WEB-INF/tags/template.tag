@@ -33,7 +33,7 @@
 
 
 					<li><a href="/admin/filmes">Movies</a></li>
-					<li><a href="/admin/salas">Rooms</a></li>
+					<li><a href="/admin/rooms">Rooms</a></li>
 					<li><a href="/filme/em-cartaz">In Theaters</a></li>																							
 
 					<sec:authorize access="!isAuthenticated()">

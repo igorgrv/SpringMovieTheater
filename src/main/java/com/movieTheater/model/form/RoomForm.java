@@ -51,8 +51,8 @@ public class RoomForm {
 		return roomId;
 	}
 
-	public void setRoomId(Integer salaId) {
-		this.roomId = salaId;
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
 	}
 
 	public String getName() {

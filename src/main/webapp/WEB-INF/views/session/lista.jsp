@@ -7,7 +7,7 @@
 <movieTheater:template>
     <jsp:body>
 		<div class=" col-md-6 col-md-offset-3">
-        <h3>Sessions of the room: ${sala.name}</h3>
+        <h3>Sessions of the room: ${room.name}</h3>
 
         <table class="table table-hover ">
             <thead>

@@ -67,7 +67,7 @@ public class SessionController {
 
 		if (validation.fit(session)) {
 			sessionDao.save(session);
-			return new ModelAndView("redirect:/admin/sala/" + form.getRoomId() + "/sessoes/");
+			return new ModelAndView("redirect:/admin/room/" + form.getRoomId() + "/sessoes/");
 		} else {
 			return form(form.getRoomId());
 		}

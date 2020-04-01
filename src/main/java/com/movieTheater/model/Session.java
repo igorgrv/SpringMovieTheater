@@ -38,11 +38,11 @@ public class Session {
 	public Session() {
 	}
 
-	public Session(Movie filme, Room sala, LocalTime horario) {
+	public Session(Movie filme, Room room, LocalTime horario) {
 		this.movie = filme;
-		this.room = sala;
+		this.room = room;
 		this.time = horario;
-		this.price = sala.getPrice().add(filme.getPrice());
+		this.price = room.getPrice().add(filme.getPrice());
 	}
 
 	public Map<String, List<Seat>> getMapaDeLugares() {

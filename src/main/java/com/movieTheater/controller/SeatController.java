@@ -31,9 +31,9 @@ public class SeatController {
 	private SeatDao seatDao;
 
 	@GetMapping("/admin/lugar")
-	public ModelAndView form(@RequestParam("roomId") Integer salaId, SeatForm lugarDto) {
+	public ModelAndView form(@RequestParam("roomId") Integer roomId, SeatForm lugarDto) {
 
-		lugarDto.setRoomId(salaId);
+		lugarDto.setRoomId(roomId);
 
 		ModelAndView view = new ModelAndView("lugar/lugar");
 
@@ -59,7 +59,7 @@ public class SeatController {
 
 		roomDao.save(room);
 
-		return new ModelAndView("redirect:/admin/sala/" + roomId + "/lugares/");
+		return new ModelAndView("redirect:/admin/room/" + roomId + "/lugares/");
 	}
 
 }
