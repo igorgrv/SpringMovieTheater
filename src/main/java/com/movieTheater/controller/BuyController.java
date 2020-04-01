@@ -1,14 +1,19 @@
 package com.movieTheater.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.movieTheater.dao.BuyDao;
 import com.movieTheater.dao.SeatDao;
 import com.movieTheater.dao.SessionDao;
+import com.movieTheater.model.Card;
 import com.movieTheater.model.ShopCart;
 import com.movieTheater.model.form.ShopCartForm;
 
@@ -23,8 +28,8 @@ public class BuyController {
 	private SeatDao seatDao;
 	@Autowired
 	private ShopCart shopCart;
-//	@Autowired
-//	private CompraDao compraDao;
+	@Autowired
+	private BuyDao buyDao;
 	
 	@PostMapping("/compra/ingressos")
 	public ModelAndView enviaParaPagamento(ShopCartForm shopCartForm) {
@@ -34,24 +39,24 @@ public class BuyController {
 	}
 	
 	@GetMapping("/compra")
-	public ModelAndView formCompra() {
+	public ModelAndView formCompra(Card card) {
 		ModelAndView mv = new ModelAndView("compra/pagamento");
 		mv.addObject("shopCart", shopCart);
 		return mv;
 	}
-//	
-//	@PostMapping("/compra/comprar")
-//	public ModelAndView comprar(@Valid Cartao cartao, BindingResult result) {
-//		ModelAndView mv = new ModelAndView("redirect:/");
-//		
-//		if(cartao.isValido()) {
-//			compraDao.save(carrinho.toCompra());
-//			this.carrinho.limpa();
-//		} else {
-//			result.rejectValue("vencimento", "Vencimento inválido");
-//			return formCompra(cartao);
-//		}
-//		return mv;
-//	}
+	
+	@PostMapping("/compra/comprar")
+	public ModelAndView comprar(@Valid Card card, BindingResult result) {
+		ModelAndView mv = new ModelAndView("redirect:/");
+		
+		if(card.isValidated()) {
+			buyDao.save(shopCart.toCompra());
+			this.shopCart.clear();
+		} else {
+			result.rejectValue("expires", "Invalid");
+			return formCompra(card);
+		}
+		return mv;
+	}
 	
 }

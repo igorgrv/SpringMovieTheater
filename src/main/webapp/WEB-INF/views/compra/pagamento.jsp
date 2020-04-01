@@ -19,38 +19,38 @@
                 </thead>
 
                 <tbody>
-                <c:forEach items="${carrinho.ingressos}" var="ingresso" varStatus="status">
+                <c:forEach items="${shopCart.tickets}" var="ticket" varStatus="status">
 
-                    <input type="hidden" name="ingressos[${status.index}].sessao.id" value="${ingresso.sessao.id}">
-                    <input type="hidden" name="ingressos[${status.index}].lugar.id" value="${ingresso.lugar.id}">
-                    <input type="hidden" name="ingressos[${status.index}].tipoDeIngresso" value="${ingresso.tipoDeIngresso}">
+                    <input type="hidden" name="ingressos[${status.index}].session.id" value="${ticket.session.id}">
+                    <input type="hidden" name="ingressos[${status.index}].seat.id" value="${ticket.seat.id}">
+                    <input type="hidden" name="ingressos[${status.index}].typeOfTickets" value="${ticket.typeOfTickets}">
                     <tr>
-                        <td>${ingresso.sessao.sala.nome}</td>
-                        <td>${ingresso.lugar.fileira}${ingresso.lugar.posicao}</td>
-                        <td>${ingresso.sessao.filme.nome }</td>
-                        <td>${ingresso.sessao.horario}</td>
-                        <td>${ingresso.tipoDeIngresso.descricao}</td>
-                        <td>${ingresso.preco}</td>
+                        <td>${ticket.session.room.name}</td>
+                        <td>${ticket.seat.row}${ticket.seat.line}</td>
+                        <td>${ticket.session.movie.name }</td>
+                        <td>${ticket.session.time}</td>
+                        <td>${ticket.typeOfTickets.description}</td>
+                        <td>${ticket.price}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
 
                 <tfoot>
                 <td colspan="5" class="text-right"><strong>TOTAL</strong></td>
-                <td><strong>${carrinho.total}</strong></td>
+                <td><strong>${shopCart.total}</strong></td>
                 </tfoot>
 
             </table>
 
             <div class="form-group">
                 <div class="col-md-6">
-                    <label for="nome">Nome:</label>
-                    <input id="nome" type="text" name="nome" class="form-control">
+                    <label for="name">Name:</label>
+                    <input id="name" type="text" name="name" class="form-control">
                 </div>
 
                 <div class="col-md-6">
-                    <label for="sobrenome">Sobrenome:</label>
-                    <input id="sobrenome" type="text" name="sobrenome" class="form-control">
+                    <label for="lastName">Last Name:</label>
+                    <input id="lastName" type="text" name="lastName" class="form-control">
                 </div>
             </div>
 
@@ -64,8 +64,8 @@
 
             <div class="form-group">
                 <div class="col-md-8">
-                    <label for="cartaoDeCredito">Cartão de Crédito:</label>
-                    <input id="cartaoDeCredito" type="text" name="cartaoDeCredito" class="form-control">
+                    <label for="cardNumber">Credit Card:</label>
+                    <input id="cardNumber" type="text" name="cardNumber" class="form-control">
                 </div>
 
                 <div class="col-md-4">
@@ -76,14 +76,14 @@
 
             <div class="form-group">
                 <div class="col-md-6">
-                    <label for="vencimento">Vencimento:</label>
-                    <input id="vencimento" type="text" name="vencimento" class="form-control">
+                    <label for="expires">Expires:</label>
+                    <input id="expires" type="text" name="expires" class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Comprar</button>
+                    <button type="submit" class="btn btn-primary">Buy!</button>
                 </div>
             </div>
 
