@@ -61,7 +61,7 @@
 								<td>${session.room.name}</td>
 								<td>${session.time}</td>
 								<td>
-									<a href="/sessao/${session.id}/lugares" class="btn">
+									<a href="/session/${session.id}/lugares" class="btn">
 										Buy
 										<span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
 									</a>

@@ -55,8 +55,8 @@ public class Ticket {
 		return session;
 	}
 
-	public void setSession(Session sessao) {
-		this.session = sessao;
+	public void setSession(Session session) {
+		this.session = session;
 	}
 
 	public Seat getSeat() {

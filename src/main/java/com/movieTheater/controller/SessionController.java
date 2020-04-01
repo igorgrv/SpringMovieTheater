@@ -46,9 +46,9 @@ public class SessionController {
 	@Autowired
 	private ShopCart shopCart;
 
-	@GetMapping("/admin/sessao")
+	@GetMapping("/admin/session")
 	public ModelAndView form(@RequestParam("roomId") Integer roomId) {
-		ModelAndView mv = new ModelAndView("sessao/sessao");
+		ModelAndView mv = new ModelAndView("session/session");
 		List<Movie> movies = movieDao.findAll();
 		Room room = roomDao.findOne(roomId);
 		mv.addObject("movies", movies);
@@ -56,7 +56,7 @@ public class SessionController {
 		return mv;
 	}
 
-	@PostMapping("/admin/sessao")
+	@PostMapping("/admin/session")
 	public ModelAndView salvarSession(@Valid SessionForm form, BindingResult result) {
 		if (result.hasErrors()) {
 			return form(form.getRoomId());
@@ -74,9 +74,9 @@ public class SessionController {
 
 	}
 
-	@GetMapping("/sessao/{id}/lugares")
+	@GetMapping("/session/{id}/lugares")
 	public ModelAndView selecionaLugares(@PathVariable("id") Integer id) {
-		ModelAndView mv = new ModelAndView("sessao/lugares");
+		ModelAndView mv = new ModelAndView("session/lugares");
 		Session session = sessionDao.findOne(id);
 		Optional<MovieDetails> details = client.request(session.getMovie());
 		mv.addObject("session", session);

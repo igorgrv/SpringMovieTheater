@@ -15,12 +15,12 @@ public class ShopCartForm {
 
 	private List<Ticket> tickets = new ArrayList<>();
 
-	public List<Ticket> toIngressos(SessionDao sessaoDao, SeatDao lugarDao){
+	public List<Ticket> toIngressos(SessionDao sessionDao, SeatDao lugarDao){
 		return this.tickets.stream().map(ticket -> {
-			Session sessao = sessaoDao.findOne(ticket.getSession().getId());
+			Session session = sessionDao.findOne(ticket.getSession().getId());
 			Seat seat = lugarDao.findOne(ticket.getSeat().getId());
 			TypeOfTickets tipoDeIngresso = ticket.getTypeOfTickets();
-			return new Ticket(sessao, seat, tipoDeIngresso);
+			return new Ticket(session, seat, tipoDeIngresso);
 		}).collect(Collectors.toList());
 	}
 	

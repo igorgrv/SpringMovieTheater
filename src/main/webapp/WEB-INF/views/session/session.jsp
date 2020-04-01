@@ -11,7 +11,7 @@
 
         <h3>New session for the room: ${room.name}</h3>
 
-        <form action='/admin/sessao' method="post">
+        <form action='/admin/session' method="post">
             <input type="hidden" name="roomId" value="${room.id}">
 
             <div class="form-group">

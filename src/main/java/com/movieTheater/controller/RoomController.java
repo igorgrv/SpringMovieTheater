@@ -70,7 +70,7 @@ public class RoomController {
 
         Room room = roomDao.findOne(id);
 
-        ModelAndView view = new ModelAndView("sessao/lista");
+        ModelAndView view = new ModelAndView("session/lista");
         view.addObject("room", room);
         view.addObject("sessions", sessionDao.listaDeSessoesPorRoom(room));
         return view;

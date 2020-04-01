@@ -24,8 +24,8 @@ public class SessionForm {
 	public Session toSession(MovieDao movieDao, RoomDao roomDao) {
 		Movie filme = movieDao.findOne(movieId);
 		Room sala = roomDao.findOne(roomId);
-		Session sessao = new Session(filme, sala, this.time);
-		return sessao;
+		Session session = new Session(filme, sala, this.time);
+		return session;
 	}
 
 	public Integer getRoomId() {

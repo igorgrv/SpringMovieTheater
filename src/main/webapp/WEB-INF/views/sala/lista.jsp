@@ -20,12 +20,12 @@
 		   <td class="text-center">${sala.price}</td>
                     <td class="col-md-1">
                         <a href="/admin/sala/${sala.id}/sessoes/" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Sessões
+                            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Sessions
                         </a>
                     </td>
                     <td class="col-md-1">
                         <a href="/admin/sala/${sala.id}/lugares/" class="btn btn-warning">
-                            <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Lugares
+                            <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Seats
                         </a>
                     </td>
                     <td>
