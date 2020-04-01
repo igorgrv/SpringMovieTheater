@@ -8,15 +8,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib tagdir="/WEB-INF/tags/" prefix="ingresso" %>
+<%@ taglib tagdir="/WEB-INF/tags/" prefix="movieTheater" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<ingresso:template>
-	<jsp:attribute name="compra_css">
-		<link rel="stylesheet" href="/assets/css/compra.css" />
+<movieTheater:template>
+	<jsp:attribute name="buy_css">
+		<link rel="stylesheet" href="/assets/css/buy.css" />
     </jsp:attribute>
     <jsp:body>
-    	<div class="container-compra">
+    	<div class="container-buy">
     	
 		<div class="sidenav">
 			<div class="elementsNav">
@@ -28,7 +28,7 @@
 		</div>
 		<div class="main">
 			<h2>Lugares</h2>
-			<table class="table-compra" id="lugares">
+			<table class="table-buy" id="lugares">
 				<tbody>
 					<c:forEach var="map" items="${session.mapaDeLugares}">
 						<tr class="fileira">
@@ -99,7 +99,7 @@
 				</tbody>
 			</table>
 			<div class="tipoIngresso">
-	        <form action="/compra/ingressos" method="post">
+	        <form action="/buy/ingressos" method="post">
 	            <table class="table table-hover" id="tabela-ingressos">
 	                <thead>
 	                    <th>Sala</th>
@@ -209,4 +209,4 @@
     </jsp:body>
 
 
-</ingresso:template>
+</movieTheater:template>

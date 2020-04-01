@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="ingresso" tagdir="/WEB-INF/tags/" %>
+<%@taglib prefix="movieTheater" tagdir="/WEB-INF/tags/" %>
 
-<ingresso:template>
+<movieTheater:template>
     <jsp:body>
     	<div class=" col-md-6 col-md-offset-3">
         	<h1>Adicionado com sucesso =)</h1>
       	</div>
     </jsp:body>
-</ingresso:template>
+</movieTheater:template>

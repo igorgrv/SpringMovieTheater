@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="ingresso" tagdir="/WEB-INF/tags/" %>
+<%@taglib prefix="movieTheater" tagdir="/WEB-INF/tags/" %>
 
-<ingresso:template>
+<movieTheater:template>
     <jsp:body>
         <h1>Erro!!!! =(</h1>
     </jsp:body>
-</ingresso:template>
+</movieTheater:template>

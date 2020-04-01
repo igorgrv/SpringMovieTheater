@@ -4,15 +4,15 @@ html, body {
 	font-size: 1.3vw;
 }
 
-.table-compra {
+.table-buy {
   width: 100%;
   max-width: 100%;
 }
 
-.table-compra > thead > tr > th,
-.table-compra > tbody > tr > th,
-.table-compra > thead > tr > td,
-.table-compra > tbody > tr > td{
+.table-buy > thead > tr > th,
+.table-buy > tbody > tr > th,
+.table-buy > thead > tr > td,
+.table-buy > tbody > tr > td{
   padding: 0.5vw;
   line-height: 1.42857143;
 }
@@ -47,7 +47,7 @@ h3{
        font-size: 1.5vw;
 }
 
-.container-compra{
+.container-buy{
 	display: flex;
 	align-items: stretch;
 }
@@ -66,7 +66,7 @@ h3{
 
 
 @media screen and (max-width: 720px) {
-	.container-compra{
+	.container-buy{
 		flex-flow: column;
 		margin: 0 auto;
 	}
@@ -87,7 +87,7 @@ h3{
 		font-size:1vw
 	}
 	
-	.table-compra{
+	.table-buy{
 		width: 80%;
 		margin: 0 auto;
 	}

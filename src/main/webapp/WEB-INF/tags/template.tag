@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
-<%@attribute name="compra_css" fragment="true" %>
+<%@attribute name="buy_css" fragment="true" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-<jsp:invoke fragment="compra_css"/>
+<jsp:invoke fragment="buy_css"/>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -42,11 +42,11 @@
 
 
 					<sec:authorize access="isAnonymous() Or hasRole('COMPRADOR')">
-						<li><a href="/compra">Comprar</a></li>
+						<li><a href="/buy">Comprar</a></li>
 					</sec:authorize>
 
 					<sec:authorize access="hasRole('COMPRADOR')">
-						<li><a href="/usuario/compras">Minhas Compras</a></li>
+						<li><a href="/usuario/buys">Minhas Compras</a></li>
 					</sec:authorize>
 
 					<sec:authorize access="isAuthenticated()">

@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib tagdir="/WEB-INF/tags/" prefix="ingresso" %>
+<%@ taglib tagdir="/WEB-INF/tags/" prefix="movieTheater" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<ingresso:template>
+<movieTheater:template>
     <jsp:body>
    		<div class=" col-md-6 col-md-offset-3">
-        <form action="/compra/comprar" method="post">
+        <form action="/buy/buyr" method="post">
             <table class="table table-hover ">
                 <thead>
                 <th>Sala</th>
@@ -90,4 +90,4 @@
         </form>
 		</div>
     </jsp:body>
-</ingresso:template>
+</movieTheater:template>

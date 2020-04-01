@@ -31,22 +31,22 @@ public class BuyController {
 	@Autowired
 	private BuyDao buyDao;
 	
-	@PostMapping("/compra/ingressos")
+	@PostMapping("/buy/ingressos")
 	public ModelAndView enviaParaPagamento(ShopCartForm shopCartForm) {
-		ModelAndView mv = new ModelAndView("redirect:/compra");
+		ModelAndView mv = new ModelAndView("redirect:/buy");
 		shopCartForm.toIngressos(sessionDao, seatDao).forEach(shopCart::add);
 		return mv;
 	}
 	
-	@GetMapping("/compra")
+	@GetMapping("/buy")
 	public ModelAndView formCompra(Card card) {
-		ModelAndView mv = new ModelAndView("compra/pagamento");
+		ModelAndView mv = new ModelAndView("buy/pagamento");
 		mv.addObject("shopCart", shopCart);
 		return mv;
 	}
 	
-	@PostMapping("/compra/comprar")
-	public ModelAndView comprar(@Valid Card card, BindingResult result) {
+	@PostMapping("/buy/buyr")
+	public ModelAndView buyr(@Valid Card card, BindingResult result) {
 		ModelAndView mv = new ModelAndView("redirect:/");
 		
 		if(card.isValidated()) {
