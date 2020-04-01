@@ -36,9 +36,9 @@
 							<td class="fileira-assentos">
 							<table>
 								<tr>
-								<c:forEach var="lugar" items="${map.value}">
+								<c:forEach var="seat" items="${map.value}">
 									<td class="fileira-assento"><figure>
-										<svg class="assento ${session.isAvailable(lugar) && !carrinho.isSelecionado(lugar) ? 'disponivel' : 'ocupado'}" onclick="${session.isAvailable(lugar)&& !carrinho.isSelecionado(lugar) ? 'changeCheckbox(this)' : ''}" data-lugar="${lugar}" id="${lugar.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										<svg class="assento ${session.isAvailable(seat) && !shopCart.isSelected(seat) ? 'disponivel' : 'ocupado'}" onclick="${session.isAvailable(seat)&& !shopCart.isSelected(seat) ? 'changeCheckbox(this)' : ''}" data-lugar="${seat}" id="${seat.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 318.224 305.246" enable-background="new 0 0 318.224 305.246" xml:space="preserve">
 											<g id="FILL">
 												<path d="M269.395,132.246h-15.02V51.414c0-11.758-9.492-21.248-21.248-21.248H85.097
@@ -63,8 +63,8 @@
 												c1.681-2.082,4.185-3.272,6.854-3.272h155.634c2.67,0,5.174,1.19,6.854,3.272c1.688,2.075,2.338,4.773,1.785,7.394l-8.397,39.591
 											c-0.858,4.053-4.496,7-8.639,7H89.678C85.534,269.772,81.896,266.825,81.039,262.772z"/>
 										</svg>
-										<input type="checkbox" value="${lugar.id}" >
-									    <figcaption>${lugar.posicao}</figcaption>
+										<input type="checkbox" value="${seat.id}" >
+									    <figcaption>${seat.line}</figcaption>
 									</figure></td>
 								</c:forEach>
 								</tr>
@@ -127,8 +127,8 @@
                 console.log(checkbox.value);
             	var salaId = ${session.room.id};
                 var sessionId = ${session.id};
-                var lugarNome = img.getAttribute('data-lugar');
-                var linhaId = "linha_" + salaId + "_" + sessionId + "_" + lugarNome;
+                var seatNome = img.getAttribute('data-lugar');
+                var linhaId = "linha_" + salaId + "_" + sessionId + "_" + seatNome;
 
                 console.log(linhaId);
 
@@ -138,7 +138,7 @@
                     var index = tbody.rows.length;
 
                     var inputSessaoId = makeInputHiddenBy('ingressos['+index+'].session.id', sessionId);
-                    var inputLugarId = makeInputHiddenBy('ingressos['+index+'].lugar.id', checkbox.value);
+                    var inputLugarId = makeInputHiddenBy('ingressos['+index+'].seat.id', checkbox.value);
 
                     var row =  tbody.insertRow(index);
                     row.setAttribute('id', linhaId);
@@ -156,19 +156,19 @@
                     cellHorario.appendChild(horario);
 
                     var cellLugar = row.insertCell(3);
-                    var lugar = document.createTextNode(lugarNome);
-                    cellLugar.appendChild(lugar);
+                    var seat = document.createTextNode(seatNome);
+                    cellLugar.appendChild(seat);
 
                     var cellTipo = row.insertCell(4);
                     var selectTipo = document.createElement('select');
-                    selectTipo.setAttribute('name', 'ingressos['+index+'].tipoDeIngresso');
+                    selectTipo.setAttribute('name', 'ingressos['+index+'].typeOfTickets');
                     selectTipo.setAttribute('class', 'form-control input-sm');
 
-                <c:forEach items="${tiposDeIngressos}" var="tipo" varStatus="status">
+                <c:forEach items="${typeOfTickets}" var="type" varStatus="status">
                     var option_${status.index} = document.createElement('option');
-                    var text_${status.index} = document.createTextNode('${tipo.description}');
+                    var text_${status.index} = document.createTextNode('${type.description}');
 
-                    option_${status.index}.setAttribute('value', '${tipo}');
+                    option_${status.index}.setAttribute('value', '${type}');
                     option_${status.index}.appendChild(text_${status.index});
 
                     selectTipo.appendChild(option_${status.index});

@@ -2,7 +2,7 @@ package com.movieTheater.model.form;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.movieTheater.model.Lugar;
+import com.movieTheater.model.Seat;
 
 import javax.validation.constraints.NotNull;
 
@@ -18,8 +18,8 @@ public class SeatForm {
     private Integer line;
     private Integer roomId;
 
-    public Lugar toLugar() {
-        return new Lugar(row, line);
+    public Seat toLugar() {
+        return new Seat(row, line);
     }    
     
     public String getRow() {

@@ -9,20 +9,20 @@ import org.springframework.web.context.annotation.SessionScope;
 
 @Component
 @SessionScope
-public class Carrinho {
+public class ShopCart {
 
-	private List<Ingresso> tickets = new ArrayList<>();
+	private List<Ticket> tickets = new ArrayList<>();
 	
-	public void add(Ingresso ticket) {
+	public void add(Ticket ticket) {
 		tickets.add(ticket);
 	}
 	
-	public boolean isSelecionado(Lugar lugar) {
-		return tickets.stream().map(Ingresso::getLugar).anyMatch(ticket -> ticket.equals(lugar));
+	public boolean isSelected(Seat seat) {
+		return tickets.stream().map(Ticket::getSeat).anyMatch(ticket -> ticket.equals(seat));
 	}
 	
 	public BigDecimal getTotal() {
-		return tickets.stream().map(Ingresso::getPreco).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+		return tickets.stream().map(Ticket::getPrice).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
 	}
 	
 //	public Compra toCompra() {

@@ -2,7 +2,7 @@ package com.movieTheater.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.movieTheater.model.Lugar;
+import com.movieTheater.model.Seat;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,11 +18,11 @@ public class SeatDao {
     @PersistenceContext
     private EntityManager manager;
 
-    public void save(Lugar lugar) {
-        manager.persist(lugar);
+    public void save(Seat seat) {
+        manager.persist(seat);
     }
     
-    public Lugar findOne(Integer id) {
-    	return manager.find(Lugar.class, id);
+    public Seat findOne(Integer id) {
+    	return manager.find(Seat.class, id);
     }
 }

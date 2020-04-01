@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.movieTheater.model.Lugar;
+import com.movieTheater.model.Seat;
 import com.movieTheater.model.Room;
 
 /**
@@ -20,10 +20,9 @@ public class RoomForm {
 	private Integer roomId;
 	@NotBlank
 	private String name;
-	@NotBlank
 	private BigDecimal price = BigDecimal.ZERO;
 
-	private List<Lugar> lugars = new ArrayList<>();
+	private List<Seat> seats = new ArrayList<>();
 
 	// -----------------------------------------------------------------
 	// Constructors
@@ -33,7 +32,8 @@ public class RoomForm {
 	public RoomForm(Room room) {
 		this.roomId = room.getId();
 		this.name = room.getName();
-		this.lugars = new ArrayList<>(room.getSeat());
+		this.price = room.getPrice();
+		this.seats = new ArrayList<>(room.getSeat());
 	}
 
 	// -----------------------------------------------------------------
@@ -41,7 +41,7 @@ public class RoomForm {
 	public Room toSala() {
 		Room room = new Room(this.name, this.price);
 		room.setId(this.roomId);
-		room.setSeat(new HashSet<>(this.lugars));
+		room.setSeat(new HashSet<>(this.seats));
 		return room;
 	}
 
@@ -63,12 +63,12 @@ public class RoomForm {
 		this.name = name;
 	}
 
-	public List<Lugar> getSeats() {
-		return lugars;
+	public List<Seat> getSeats() {
+		return seats;
 	}
 
-	public void setSeats(List<Lugar> lugars) {
-		this.lugars = lugars;
+	public void setSeats(List<Seat> seats) {
+		this.seats = seats;
 	}
 
 	public BigDecimal getPrice() {

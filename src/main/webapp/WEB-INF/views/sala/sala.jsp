@@ -26,14 +26,14 @@
             </div>
 
          
-<!--              <div class="form-group"> -->
-<!--                 <label for="preco">Preço:</label> -->
-<!--                 <input id="preco" type="text" name="preco" -->
-<%-- 						class="form-control" value="${salaForm.preco}" /> --%>
-<%--                 <c:forEach items="${bindingResult.getFieldErrors('preco')}" var="error"> --%>
-<%-- 					<span class="text-danger">${error.defaultMessage}</span> --%>
-<%-- 				</c:forEach> --%>
-<!--             </div> -->
+             <div class="form-group">
+                <label for="price">Preço:</label>
+                <input id="price" type="text" name="price"
+						class="form-control" value="${salaForm.price}" />
+                <c:forEach items="${bindingResult.getFieldErrors('price')}" var="error">
+					<span class="text-danger">${error.defaultMessage}</span>
+				</c:forEach>
+            </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
         </div>

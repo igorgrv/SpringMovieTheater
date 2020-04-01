@@ -21,7 +21,7 @@ public class Movie {
 	private String name;
 	private Duration duration;
 	private String genre;
-	private BigDecimal price;
+	private BigDecimal price = BigDecimal.ZERO;
 
 	/**
 	 * @deprecated hibernate only
@@ -75,10 +75,6 @@ public class Movie {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
-	}
-
-	public void setDuration(Duration duration) {
-		this.duration = duration;
 	}
 
 }

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.movieTheater.dao.SeatDao;
 import com.movieTheater.dao.RoomDao;
-import com.movieTheater.model.Lugar;
+import com.movieTheater.model.Seat;
 import com.movieTheater.model.Room;
 import com.movieTheater.model.form.SeatForm;
 
@@ -51,11 +51,11 @@ public class SeatController {
 
 		Integer roomId = lugarDto.getRoomId();
 
-		Lugar lugar = lugarDto.toLugar();
-		seatDao.save(lugar);
+		Seat seat = lugarDto.toLugar();
+		seatDao.save(seat);
 
 		Room room = roomDao.findOne(roomId);
-		room.add(lugar);
+		room.add(seat);
 
 		roomDao.save(room);
 

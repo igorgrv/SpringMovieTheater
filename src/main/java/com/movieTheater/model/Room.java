@@ -30,7 +30,7 @@ public class Room {
 	private BigDecimal price = BigDecimal.ZERO;;
 
 	@OneToMany(fetch = FetchType.EAGER)
-	private Set<Lugar> lugar = new HashSet<>();
+	private Set<Seat> seat = new HashSet<>();
 
 	/**
 	 * @deprecated hibernate only
@@ -48,20 +48,20 @@ public class Room {
 
 	// -----------------------------------------------------------------
 	// Methods
-	public void add(Lugar lugar) {
-		this.lugar.add(lugar);
+	public void add(Seat seat) {
+		this.seat.add(seat);
 	}
 
-	public Map<String, List<Lugar>> getMapaDeLugares() {
-		if (!this.lugar.isEmpty()) {
-			return this.lugar.stream().collect(Collectors.groupingBy(Lugar::getFileira, Collectors.toList()));
+	public Map<String, List<Seat>> getMapaDeLugares() {
+		if (!this.seat.isEmpty()) {
+			return this.seat.stream().collect(Collectors.groupingBy(Seat::getRow, Collectors.toList()));
 		}
 		return Collections.emptyMap();
 	}
 
 	public Integer lugar(String fileira, Integer posicao) {
-		Optional<Lugar> optional = this.lugar.stream()
-				.filter((x) -> fileira.equals(x.getFileira()) && posicao.equals(x.getPosicao())).findFirst();
+		Optional<Seat> optional = this.seat.stream()
+				.filter((x) -> fileira.equals(x.getRow()) && posicao.equals(x.getLine())).findFirst();
 		return optional.get().getId();
 	}
 
@@ -83,12 +83,12 @@ public class Room {
 		this.name = name;
 	}
 
-	public Set<Lugar> getSeat() {
-		return lugar;
+	public Set<Seat> getSeat() {
+		return seat;
 	}
 
-	public void setSeat(Set<Lugar> lugar) {
-		this.lugar = lugar;
+	public void setSeat(Set<Seat> seat) {
+		this.seat = seat;
 	}
 
 	public BigDecimal getPrice() {
