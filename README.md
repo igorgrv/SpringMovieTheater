@@ -1,2 +1,2 @@
 # SpringMovieTheater
-This Project, it's based in a Spring MVC
+This Project, it's based on Spring MVC technology
